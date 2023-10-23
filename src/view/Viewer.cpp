@@ -97,7 +97,7 @@ void Viewer::showMenu()
 
 void Viewer::showTime(int curTime, int maxTime)
 {
-    cout << "curTime:" << curTime << "/maxTime" << maxTime;
+    cout << "curTime:" << curTime << "/maxTime" << maxTime << endl;
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////游戏菜单
@@ -144,17 +144,32 @@ void Viewer::showGameRank()
 
 void Viewer::showGameSetting()
 {
+    SoundController* sdctl = SoundController::getInstance();
+    bool slience = sdctl->getSlience();
+
     system("cls");
     string menuName = "主菜单->游戏菜单->游戏设置";
     vector<string> itemNames;
-    itemNames.push_back("音效设置");
+    if (slience) {
+        itemNames.push_back("开启音效");
+    } else {
+        itemNames.push_back("关闭音效");
+    }
     itemNames.push_back("允许黑客攻击银行网络");
     itemNames.push_back("返回");
     switch (chooseItemInMenu(menuName, itemNames)) {
     case 1:
         // 音效设置
+        sdctl->setSlience(!slience);
+        // 执行音效操作
+        if (slience) {
+            sdctl->playBGM();
+        } else {
+            sdctl->stopAll();
+        }
+        showGameSetting();
         break;
-    case 2:
+    case 2: 
         // 允许黑客攻击银行网络
         break;
     case 3:
@@ -165,7 +180,6 @@ void Viewer::showGameSetting()
     default:
         cout << "输入有误请重新选择!~";
         Sleep(1000);
-        system("cls");
         showGameSetting();
         break;
     }

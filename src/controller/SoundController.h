@@ -9,6 +9,7 @@
 #include <sstream>
 #include <windows.h>
 #include <mmsystem.h>
+#include <vector>
 using namespace std;
 
 class SoundController {
@@ -25,10 +26,15 @@ public:
     // 播放背景音乐
     void playBGM();
     // 停止播放背景音乐
-
+    void stopBGM();
     // 停止所有的声音播放
+    void stopAll();
+    // 获取当前系统是否静音
+    bool getSlience();
+    bool setSlience(bool silence);
 
 protected:
 private:
     static SoundController* s_instance;
+    bool m_slience;
 };

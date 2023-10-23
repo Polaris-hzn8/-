@@ -22,3 +22,4 @@ private:
     int m_curTime; // 游戏当前时间
     int m_maxTime; // 游戏最大时间
 };
+

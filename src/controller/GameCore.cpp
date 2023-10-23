@@ -31,9 +31,9 @@ void GameCore::startGame()
     // 游戏主循环
     while (m_gameState) {
         // 逻辑刷新
-        void logicUpdate();
+        logicUpdate();
         // 显示刷新
-        void screenUpdate();
+        screenUpdate();
     }
 }
 
@@ -59,7 +59,10 @@ void GameCore::screenUpdate()
     if (gameWorld->getCurTime() > gameWorld->getMaxTime()) {
         return;
     }
-    viewer->showTime(gameWorld->getCurTime(), gameWorld->getMaxTime());
+    //viewer->showTime(gameWorld->getCurTime(), gameWorld->getMaxTime());
+
+
+
 }
 
 

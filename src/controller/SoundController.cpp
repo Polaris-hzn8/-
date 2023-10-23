@@ -17,6 +17,7 @@ SoundController* SoundController::getInstance()
 
 SoundController::SoundController()
 {
+    m_slience = false;
 }
 
 SoundController::~SoundController()
@@ -25,6 +26,9 @@ SoundController::~SoundController()
 
 void SoundController::playSound(int id)
 {
+    if (m_slience) {
+        return;
+    }
     /*
         mci 媒体控制接口 播放MPEG AVI MP3 和 ID等
         mciSendString(LPCWSTR lpszCommand, LPWSTR lpszReturnString, UNIT cchReturn, HANDLE hwndCallback)
@@ -51,6 +55,9 @@ void SoundController::stopSound(int id)
 
 void SoundController::playBGM()
 {
+    if (m_slience) {
+        return;
+    }
     /*
         PlaySound是Windows用于播放音乐的API函数 只能播放.wav格式的音频
         参数1：要播放声音的字符串（音频文件路径）
@@ -62,4 +69,31 @@ void SoundController::playBGM()
             直接传入空字符串表示停止播放
     */
     PlaySound(TEXT("res/bgm.wav"), NULL, SND_ASYNC | SND_LOOP | SND_FILENAME);
+}
+
+void SoundController::stopBGM()
+{
+    PlaySound(NULL, NULL, SND_FILENAME);
+}
+
+void SoundController::stopAll()
+{
+    // 停止播放背景音乐
+    stopBGM();
+    // 停止播放所有的音效
+    vector<int> soundIds = { 1001 };
+    for (int i = 0; i < soundIds.size(); ++i) {
+        stopSound(soundIds[i]);
+    }
+}
+
+bool SoundController::getSlience()
+{
+    return m_slience;
+}
+
+bool SoundController::setSlience(bool silence)
+{
+    m_slience = silence;
+    return true;
 }
