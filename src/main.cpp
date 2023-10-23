@@ -18,13 +18,14 @@ extern void setWinSize(int width, int height);
 int main()
 {
     // 1.控制台参数设置
-    setTitle("My leaf life record."); // 设置标题
-    setWinSize(10, 30); // 设置窗体的大小
-    setColor('8', 'F'); // 设置背景色与前景色
+    setTitle("My leaf life record.");   // 设置标题
+    //setWinSize(80, 80);                 // 设置窗体的大小
+    //setColor('8', 'F');                 // 设置背景色与前景色
 
     // 2.获取游戏控制器的单例对象
     GameController::getInstance()->start();
 
+    system("pause");
     return 0;
 }
 
