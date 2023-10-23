@@ -1,10 +1,9 @@
-#include "GameCore.h"
 ///****************************************************************************
 /// @Author    : Polaris-hzn8
 /// @Mail      : 3453851623@qq.com
 ///****************************************************************************
 
-#include "Controller/GameCore.h"
+#include "GameCore.h"
 
 GameCore* GameCore::s_instance = nullptr;
 
@@ -45,12 +44,22 @@ void GameCore::gameOver()
 
 void GameCore::logicUpdate()
 {
-
+    GameWorld *gameWorld = GameWorld::getInstance();
+    if (gameWorld->getCurTime() <= gameWorld->getMaxTime()) {
+        gameWorld->setCurTime(gameWorld->getCurTime() + 1);
+    } else {
+        gameOver();
+    }
 }
 
 void GameCore::screenUpdate()
 {
-
+    GameWorld* gameWorld = GameWorld::getInstance();
+    Viewer* viewer = Viewer::getInstance();
+    if (gameWorld->getCurTime() > gameWorld->getMaxTime()) {
+        return;
+    }
+    viewer->showTime(gameWorld->getCurTime(), gameWorld->getMaxTime());
 }
 
 

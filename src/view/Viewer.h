@@ -22,13 +22,21 @@ public:
 public:
     void showEntryAnimation();
     void showMenu();
+    void showTime(int curTime, int maxTime);
 
 protected:
 private:
     void playTypeWrite(std::string line);
+    // 菜单组1
     void showGameMenu();
+    void showGameRank();
+    void showGameSetting();
+    // 菜单组2
     void showSceneMenu();
+
+    // 菜单组3
     void showHelpMenu();
+
     // 封装菜单选择列表
     int chooseItemInMenu(string menuName, vector<string> itemNames);
 

@@ -68,6 +68,7 @@ void Viewer::playTypeWrite(string line)
     cout << endl;
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////mainMenu()
 void Viewer::showMenu()
 {
     string menuName = "欢迎来到《都市浮生日记》！";
@@ -77,7 +78,7 @@ void Viewer::showMenu()
     itemNames.push_back("帮助");
     switch (chooseItemInMenu(menuName, itemNames)) {
     case 1:
-        showGameMenu();     // 系统菜单
+        showGameMenu();     // 游戏菜单
         break;
     case 2:
         showSceneMenu();    // 场景菜单
@@ -94,10 +95,16 @@ void Viewer::showMenu()
     }
 }
 
+void Viewer::showTime(int curTime, int maxTime)
+{
+    cout << "curTime:" << curTime << "/maxTime" << maxTime;
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////游戏菜单
 void Viewer::showGameMenu()
 {
     system("cls");
-    string menuName = "当前位置：游戏菜单";
+    string menuName = "主菜单->游戏菜单";
     vector<string> itemNames;
     itemNames.push_back("新游戏");
     itemNames.push_back("高手排行榜");
@@ -110,21 +117,66 @@ void Viewer::showGameMenu()
         break;
     case 2:
         // 高手排行榜
+        showGameRank();
         break;
     case 3:
         // 游戏设置
+        showGameSetting();
         break;
     case 4:
-        // 退出游戏
+        // 返回
+        system("cls");
+        showMenu();
         break;
     default:
+        cout << "输入有误请重新选择!~";
+        Sleep(1000);
+        system("cls");
+        showGameMenu();
         break;
     }
 }
 
+void Viewer::showGameRank()
+{
+
+}
+
+void Viewer::showGameSetting()
+{
+    system("cls");
+    string menuName = "主菜单->游戏菜单->游戏设置";
+    vector<string> itemNames;
+    itemNames.push_back("音效设置");
+    itemNames.push_back("允许黑客攻击银行网络");
+    itemNames.push_back("返回");
+    switch (chooseItemInMenu(menuName, itemNames)) {
+    case 1:
+        // 音效设置
+        break;
+    case 2:
+        // 允许黑客攻击银行网络
+        break;
+    case 3:
+        // 返回
+        system("cls");
+        showGameMenu();
+        break;
+    default:
+        cout << "输入有误请重新选择!~";
+        Sleep(1000);
+        system("cls");
+        showGameSetting();
+        break;
+    }
+}
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////场景菜单
 void Viewer::showSceneMenu()
 {
-    string menuName = "系统菜单";
+    string menuName = "主菜单->场景菜单";
     vector<string> itemNames;
     itemNames.push_back("新游戏");
     itemNames.push_back("高手排行榜");
@@ -149,10 +201,35 @@ void Viewer::showSceneMenu()
     }
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////帮助菜单
 void Viewer::showHelpMenu()
 {
+    string menuName = "主菜单->帮助菜单";
+    vector<string> itemNames;
+    itemNames.push_back("新游戏");
+    itemNames.push_back("高手排行榜");
+    itemNames.push_back("游戏设置");
+    itemNames.push_back("退出游戏");
+    switch (chooseItemInMenu(menuName, itemNames)) {
+    case 1:
+        // 新游戏
 
+        break;
+    case 2:
+        // 高手排行榜
+        break;
+    case 3:
+        // 游戏设置
+        break;
+    case 4:
+        // 退出游戏
+        break;
+    default:
+        break;
+    }
 }
+
+
 
 int Viewer::chooseItemInMenu(string menuName, vector<string> itemNames)
 {

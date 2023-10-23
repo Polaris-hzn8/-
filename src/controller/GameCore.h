@@ -5,6 +5,12 @@
 
 #pragma once
 
+#include <iostream>
+#include "View/Viewer.h"
+#include "Model/GameWorld.h"
+#include "Controller/GameCore.h"
+using namespace std;
+
 class GameCore {
 public:
     GameCore();
@@ -21,5 +27,7 @@ private:
 
 private:
     static GameCore* s_instance;
-    bool m_gameState;
+    bool m_gameState;               // 游戏主循环运行状态
 };
+
+
