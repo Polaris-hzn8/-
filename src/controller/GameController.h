@@ -5,6 +5,9 @@
 
 #pragma once
 
+#include "View/Viewer.h"
+#include "Controller/SoundController.h"
+
 /*
 单例设计模式(饿汉模式)：
 1、单例类只能有一个实例

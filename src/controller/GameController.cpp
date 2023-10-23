@@ -4,7 +4,6 @@
 ///****************************************************************************
 
 #include "GameController.h"
-#include "View/Viewer.h"
 
 GameController* GameController::s_instance = nullptr;
 
@@ -27,14 +26,13 @@ GameController::~GameController()
 void GameController::start()
 {
     // 背景音乐播放
-
+    SoundController::getInstance()->playBGM();
 
     // 开场剧情动画的播放
-    Viewer::getInstance()->playEntryAnimation();
-
+    Viewer::getInstance()->showEntryAnimation();
 
     // 系统菜单的展示
-
+    Viewer::getInstance()->showSystemMenu();
 
 
 }

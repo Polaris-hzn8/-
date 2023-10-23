@@ -23,10 +23,12 @@ Viewer::~Viewer()
 {
 }
 
-void Viewer::playEntryAnimation()
+void Viewer::showEntryAnimation()
 {
+    // 播放打字音效
+    SoundController::getInstance()->playSound(1001);
     // 故事内容
-    std::vector<std::string> sentences = {
+    vector<string> sentences = {
         "**********************************************************************************",
         "                               都市浮生日记的故事",
         "**********************************************************************************",
@@ -41,24 +43,41 @@ void Viewer::playEntryAnimation()
         "**********************************************************************************"
     };
     for (int i = 0; i < sentences.size(); ++i) {
+        // 播放打字动画效果
         if (i < 3 || i == (sentences.size() - 1)) {
-            std::cout << sentences[i] << std::endl;
+            cout << sentences[i] << endl;
         } else {
             playTypeWrite(sentences[i]);
         }
     }
+    // 停止播放打字音效
+    SoundController::getInstance()->stopSound(1001);
 }
 
-void Viewer::playTypeWrite(std::string line)
+void Viewer::showSystemMenu()
 {
-    float speed = 10; // ms
+    // 展示菜单
+    cout << "欢迎来到《都市浮生日记》！" << endl;
+    vector<string> itemNames;
+    itemNames.push_back("系统");
+    itemNames.push_back("场景");
+    itemNames.push_back("帮助");
+
+    for (int i = 0; i < itemNames.size(); ++i) {
+        cout << i + 1 << "." << itemNames[i] << endl;
+    }
+}
+
+void Viewer::playTypeWrite(string line)
+{
+    int speed = 10; // ms
     for (int i = 0; i < line.length(); ++i) {
-        std::cout << line[i];
+        cout << line[i];
         if (line[i] == ' ') {
             continue;
         } else {
             Sleep(speed);
         }
     }
-    std::cout << std::endl;
+    cout << endl;
 }

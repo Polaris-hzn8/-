@@ -5,10 +5,12 @@
 
 #pragma once
 
+#include "controller/SoundController.h"
 #include <windows.h>
 #include <iostream>
 #include <string>
 #include <vector>
+using namespace std;
 
 class Viewer {
 public:
@@ -17,11 +19,12 @@ public:
     static Viewer* getInstance();
 
 public:
-    void playEntryAnimation();
-    void playTypeWrite(std::string line);
+    void showEntryAnimation();
+    void showSystemMenu();
 
 protected:
 private:
+    void playTypeWrite(std::string line);
     static Viewer* s_instance;
 };
 

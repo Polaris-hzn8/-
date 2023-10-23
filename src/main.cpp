@@ -9,9 +9,8 @@
 #include <sstream>
 #include <string>
 #include <windows.h>
-using namespace std;
 
-extern void setTitle(string title);
+extern void setTitle(std::string title);
 extern void setColor(char bgColor, char fgColor);
 extern void setWinSize(int width, int height);
 
@@ -29,9 +28,9 @@ int main()
     return 0;
 }
 
-void setTitle(string title)
+void setTitle(std::string title)
 {
-    stringstream cmd;
+    std::stringstream cmd;
     cmd << "title ";
     cmd << title;
     // ÃüÁîtitle + ±êÌâÃû³Æ
@@ -40,7 +39,7 @@ void setTitle(string title)
 
 void setColor(char bgColor, char fgColor)
 {
-    stringstream cmd;
+    std::stringstream cmd;
     cmd << "color ";
     cmd << bgColor;
     cmd << fgColor;
@@ -49,7 +48,7 @@ void setColor(char bgColor, char fgColor)
 
 void setWinSize(int width, int height)
 {
-    stringstream cmd;
+    std::stringstream cmd;
     cmd << "mode con ";
     cmd << "cols=" << width;
     cmd << "lines=" << height;

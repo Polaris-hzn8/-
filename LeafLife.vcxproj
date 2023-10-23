@@ -20,12 +20,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\controller\GameController.cpp" />
+    <ClCompile Include="src\controller\SoundController.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\model\GameWorld.cpp" />
     <ClCompile Include="src\view\Viewer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\controller\GameController.h" />
+    <ClInclude Include="src\controller\SoundController.h" />
     <ClInclude Include="src\model\GameWorld.h" />
     <ClInclude Include="src\view\Viewer.h" />
   </ItemGroup>
@@ -120,6 +122,9 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

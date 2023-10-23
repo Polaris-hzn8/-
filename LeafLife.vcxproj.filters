@@ -11,6 +11,9 @@
     <ClCompile Include="src\model\GameWorld.cpp">
       <Filter>Model</Filter>
     </ClCompile>
+    <ClCompile Include="src\controller\SoundController.cpp">
+      <Filter>Controller</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\view\Viewer.h">
@@ -21,6 +24,9 @@
     </ClInclude>
     <ClInclude Include="src\model\GameWorld.h">
       <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="src\controller\SoundController.h">
+      <Filter>Controller</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
