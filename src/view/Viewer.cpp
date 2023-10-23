@@ -54,20 +54,6 @@ void Viewer::showEntryAnimation()
     SoundController::getInstance()->stopSound(1001);
 }
 
-void Viewer::showSystemMenu()
-{
-    // 展示菜单
-    cout << "欢迎来到《都市浮生日记》！" << endl;
-    vector<string> itemNames;
-    itemNames.push_back("系统");
-    itemNames.push_back("场景");
-    itemNames.push_back("帮助");
-
-    for (int i = 0; i < itemNames.size(); ++i) {
-        cout << i + 1 << "." << itemNames[i] << endl;
-    }
-}
-
 void Viewer::playTypeWrite(string line)
 {
     int speed = 10; // ms
@@ -80,4 +66,103 @@ void Viewer::playTypeWrite(string line)
         }
     }
     cout << endl;
+}
+
+void Viewer::showMenu()
+{
+    string menuName = "欢迎来到《都市浮生日记》！";
+    vector<string> itemNames;
+    itemNames.push_back("游戏菜单");
+    itemNames.push_back("场景选择");
+    itemNames.push_back("帮助");
+    switch (chooseItemInMenu(menuName, itemNames)) {
+    case 1:
+        showGameMenu();     // 系统菜单
+        break;
+    case 2:
+        showSceneMenu();    // 场景菜单
+        break;
+    case 3:
+        showHelpMenu();     // 帮助菜单
+        break;
+    default:
+        cout << "输入有误请重新选择!~";
+        Sleep(1000);
+        system("cls");
+        showMenu();
+        break;
+    }
+}
+
+void Viewer::showGameMenu()
+{
+    system("cls");
+    string menuName = "当前位置：游戏菜单";
+    vector<string> itemNames;
+    itemNames.push_back("新游戏");
+    itemNames.push_back("高手排行榜");
+    itemNames.push_back("游戏设置");
+    itemNames.push_back("返回");
+    switch (chooseItemInMenu(menuName, itemNames)) {
+    case 1:
+        // 新游戏
+        GameCore::getInstance()->startGame();
+        break;
+    case 2:
+        // 高手排行榜
+        break;
+    case 3:
+        // 游戏设置
+        break;
+    case 4:
+        // 退出游戏
+        break;
+    default:
+        break;
+    }
+}
+
+void Viewer::showSceneMenu()
+{
+    string menuName = "系统菜单";
+    vector<string> itemNames;
+    itemNames.push_back("新游戏");
+    itemNames.push_back("高手排行榜");
+    itemNames.push_back("游戏设置");
+    itemNames.push_back("退出游戏");
+    switch (chooseItemInMenu(menuName, itemNames)) {
+    case 1:
+        // 新游戏
+
+        break;
+    case 2:
+        // 高手排行榜
+        break;
+    case 3:
+        // 游戏设置
+        break;
+    case 4:
+        // 退出游戏
+        break;
+    default:
+        break;
+    }
+}
+
+void Viewer::showHelpMenu()
+{
+
+}
+
+int Viewer::chooseItemInMenu(string menuName, vector<string> itemNames)
+{
+    // 菜单名称
+    cout << menuName << endl;
+    for (int i = 0; i < itemNames.size(); ++i) {
+        cout << i + 1 << "." << itemNames[i] << endl;
+    }
+    cout << "请做出你的选择：";
+    int opt;
+    cin >> opt;
+    return opt;
 }

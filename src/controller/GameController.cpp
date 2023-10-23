@@ -32,7 +32,7 @@ void GameController::start()
     Viewer::getInstance()->showEntryAnimation();
 
     // 系统菜单的展示
-    Viewer::getInstance()->showSystemMenu();
+    Viewer::getInstance()->showMenu();
 
 
 }

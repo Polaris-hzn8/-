@@ -14,6 +14,9 @@
     <ClCompile Include="src\controller\SoundController.cpp">
       <Filter>Controller</Filter>
     </ClCompile>
+    <ClCompile Include="src\controller\GameCore.cpp">
+      <Filter>Controller</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\view\Viewer.h">
@@ -26,6 +29,9 @@
       <Filter>Model</Filter>
     </ClInclude>
     <ClInclude Include="src\controller\SoundController.h">
+      <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="src\controller\GameCore.h">
       <Filter>Controller</Filter>
     </ClInclude>
   </ItemGroup>

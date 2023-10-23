@@ -5,7 +5,8 @@
 
 #pragma once
 
-#include "controller/SoundController.h"
+#include "Controller/SoundController.h"
+#include "Controller/GameCore.h"
 #include <windows.h>
 #include <iostream>
 #include <string>
@@ -20,11 +21,18 @@ public:
 
 public:
     void showEntryAnimation();
-    void showSystemMenu();
+    void showMenu();
 
 protected:
 private:
     void playTypeWrite(std::string line);
+    void showGameMenu();
+    void showSceneMenu();
+    void showHelpMenu();
+    // 封装菜单选择列表
+    int chooseItemInMenu(string menuName, vector<string> itemNames);
+
+private:
     static Viewer* s_instance;
 };
 
