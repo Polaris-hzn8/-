@@ -3,27 +3,27 @@
 /// @Mail      : 3453851623@qq.com
 ///****************************************************************************
 
-#include "Viewer.h"
+#include "GameViewer.h"
 
-Viewer* Viewer::s_instance = nullptr;
+GameViewer* GameViewer::s_instance = nullptr;
 
-Viewer* Viewer::getInstance()
+GameViewer* GameViewer::getInstance()
 {
     if (!s_instance) {
-        s_instance = new Viewer();
+        s_instance = new GameViewer();
     }
     return s_instance;
 }
 
-Viewer::Viewer()
+GameViewer::GameViewer()
 {
 }
 
-Viewer::~Viewer()
+GameViewer::~GameViewer()
 {
 }
 
-void Viewer::showEntryAnimation()
+void GameViewer::showEntryAnimation()
 {
     // 播放打字音效
     SoundController::getInstance()->playSound(1001);
@@ -54,7 +54,7 @@ void Viewer::showEntryAnimation()
     SoundController::getInstance()->stopSound(1001);
 }
 
-void Viewer::playTypeWrite(string line)
+void GameViewer::playTypeWrite(string line)
 {
     int speed = 10; // ms
     for (int i = 0; i < line.length(); ++i) {
@@ -68,23 +68,24 @@ void Viewer::playTypeWrite(string line)
     cout << endl;
 }
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////mainMenu()
-void Viewer::showMenu()
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 主菜单显示
+void GameViewer::showMenu()
 {
     string menuName = "欢迎来到《都市浮生日记》！";
     vector<string> itemNames;
     itemNames.push_back("游戏菜单");
     itemNames.push_back("场景选择");
-    itemNames.push_back("帮助");
+    itemNames.push_back("游戏帮助");
     switch (chooseItemInMenu(menuName, itemNames)) {
     case 1:
         showGameMenu();     // 游戏菜单
         break;
     case 2:
-        showSceneMenu();    // 场景菜单
+        showSceneMenu();    // 场景选择
         break;
     case 3:
-        showHelpMenu();     // 帮助菜单
+        showHelpMenu();     // 游戏帮助
         break;
     default:
         cout << "输入有误请重新选择!~";
@@ -95,13 +96,9 @@ void Viewer::showMenu()
     }
 }
 
-void Viewer::showTime(int curTime, int maxTime)
-{
-    cout << "curTime:" << curTime << "/maxTime" << maxTime << endl;
-}
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////游戏菜单
-void Viewer::showGameMenu()
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 主菜单->游戏菜单
+void GameViewer::showGameMenu()
 {
     system("cls");
     string menuName = "主菜单->游戏菜单";
@@ -137,12 +134,12 @@ void Viewer::showGameMenu()
     }
 }
 
-void Viewer::showGameRank()
+void GameViewer::showGameRank()
 {
 
 }
 
-void Viewer::showGameSetting()
+void GameViewer::showGameSetting()
 {
     SoundController* sdctl = SoundController::getInstance();
     bool slience = sdctl->getSlience();
@@ -185,10 +182,9 @@ void Viewer::showGameSetting()
     }
 }
 
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////场景菜单
-void Viewer::showSceneMenu()
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 主菜单->场景选择
+void GameViewer::showSceneMenu()
 {
     string menuName = "主菜单->场景菜单";
     vector<string> itemNames;
@@ -215,8 +211,9 @@ void Viewer::showSceneMenu()
     }
 }
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////帮助菜单
-void Viewer::showHelpMenu()
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 主菜单->帮助
+void GameViewer::showHelpMenu()
 {
     string menuName = "主菜单->帮助菜单";
     vector<string> itemNames;
@@ -243,9 +240,8 @@ void Viewer::showHelpMenu()
     }
 }
 
-
-
-int Viewer::chooseItemInMenu(string menuName, vector<string> itemNames)
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+int GameViewer::chooseItemInMenu(string menuName, vector<string> itemNames)
 {
     // 菜单名称
     cout << menuName << endl;

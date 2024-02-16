@@ -2,14 +2,32 @@
 
 ---
 
-浮生日记，确实人生一梦，
+### MVC结构设计
+
+整个游戏的软件结构是以MVC的结构设计的，分成3层结构：Model数据模型层、View视图层（用于显示）、Controller层（用于游戏进程控制） 
+
+使用单例模式管理每个层次的类对象，
+
+- View视图层：`GameViewer` 
+- Model数据层：`GameModel` 
+- Controller控制层：`GameController`、`GameCore`、`SoundController`，
+
+GameController与GameCore的比较：GameController更偏向于整体游戏的控制，而GameCore主要用于游戏开始的具体内容显示，
+
+### 运行方式
+
+使用visual studio打开项目中的`LeafLife.sln`文件，选择Release & x64平台最后生成可执行文件，
+
+需要将res目录的资源文件同时拷贝到生成的目录下，才能保证程序的资源文件正常被使用，
+
+### 主要技术点
 
 1. step1：
     - MVC架构设计、单例设计模式、
     - 游戏开场剧情展示、打字动画
     - 构建声音播放控制器、同步播放打字音效、异步播放背景音乐
 2. step2：
-    - 游戏系统菜单、游戏主循环、
+    - 游戏主循环（游戏核心）、
     - 音效开启和关闭设置
     - 游戏计时功能
 3. step3：

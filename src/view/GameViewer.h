@@ -5,24 +5,22 @@
 
 #pragma once
 
-#include "Controller/SoundController.h"
-#include "Controller/GameCore.h"
-#include <windows.h>
-#include <iostream>
-#include <string>
 #include <vector>
+#include <string>
+#include <iostream>
+#include <windows.h>
+#include "Controller/GameCore.h"
+#include "Controller/SoundController.h"
 using namespace std;
 
-class Viewer {
+class GameViewer {
 public:
-    Viewer();
-    virtual ~Viewer();
-    static Viewer* getInstance();
+    GameViewer();
+    virtual ~GameViewer();
+    static GameViewer* getInstance();
 
-public:
     void showEntryAnimation();
     void showMenu();
-    void showTime(int curTime, int maxTime);
 
 protected:
 private:
@@ -40,7 +38,6 @@ private:
     // 封装菜单选择列表
     int chooseItemInMenu(string menuName, vector<string> itemNames);
 
-private:
-    static Viewer* s_instance;
+    static GameViewer* s_instance;
 };
 

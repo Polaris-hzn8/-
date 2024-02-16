@@ -5,21 +5,20 @@
 
 #pragma once
 
-class GameWorld {
+class GameModel {
 public:
-    GameWorld();
-    virtual ~GameWorld();
-    static GameWorld* getInstance();
+    GameModel();
+    virtual ~GameModel();
+    static GameModel* getInstance();
 
-public:
     int getCurTime();
     void setCurTime(int time);
     int getMaxTime();
 
 protected:
 private:
-    static GameWorld* s_instance;
     int m_curTime; // 游戏当前时间
     int m_maxTime; // 游戏最大时间
+    static GameModel* s_instance;
 };
 

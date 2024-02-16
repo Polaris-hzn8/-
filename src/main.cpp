@@ -3,12 +3,12 @@
 /// @Mail      : 3453851623@qq.com
 ///****************************************************************************
 
-#include "Model/GameWorld.h"
-#include "Controller/GameController.h"
-#include <iostream>
-#include <sstream>
 #include <string>
+#include <sstream>
+#include <iostream>
 #include <windows.h>
+#include "Model/GameModel.h"
+#include "Controller/GameController.h"
 
 extern void setTitle(std::string title);
 extern void setColor(char bgColor, char fgColor);
@@ -28,6 +28,7 @@ int main()
     return 0;
 }
 
+// 设置窗体名称
 void setTitle(std::string title)
 {
     std::stringstream cmd;
@@ -37,6 +38,7 @@ void setTitle(std::string title)
     system(cmd.str().c_str());
 }   
 
+// 设置窗体颜色
 void setColor(char bgColor, char fgColor)
 {
     std::stringstream cmd;
@@ -46,6 +48,7 @@ void setColor(char bgColor, char fgColor)
     system(cmd.str().c_str());
 }
 
+// 设置窗体大小
 void setWinSize(int width, int height)
 {
     std::stringstream cmd;

@@ -19,19 +19,23 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="GameRole.cpp" />
     <ClCompile Include="src\controller\GameController.cpp" />
     <ClCompile Include="src\controller\GameCore.cpp" />
     <ClCompile Include="src\controller\SoundController.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\model\GameWorld.cpp" />
-    <ClCompile Include="src\view\Viewer.cpp" />
+    <ClCompile Include="src\model\GameModel.cpp" />
+    <ClCompile Include="src\view\GameInfoView.cpp" />
+    <ClCompile Include="src\view\GameViewer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GameRole.h" />
     <ClInclude Include="src\controller\GameController.h" />
     <ClInclude Include="src\controller\GameCore.h" />
     <ClInclude Include="src\controller\SoundController.h" />
-    <ClInclude Include="src\model\GameWorld.h" />
-    <ClInclude Include="src\view\Viewer.h" />
+    <ClInclude Include="src\model\GameModel.h" />
+    <ClInclude Include="src\view\GameInfoView.h" />
+    <ClInclude Include="src\view\GameViewer.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -133,16 +137,19 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)\src\%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>Disabled</Optimization>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

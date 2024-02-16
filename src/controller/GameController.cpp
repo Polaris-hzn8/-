@@ -26,14 +26,11 @@ GameController::~GameController()
 void GameController::start()
 {
     // 背景音乐播放
-    SoundController::getInstance()->playBGM();
-
+    //SoundController::getInstance()->playBGM();
     // 开场剧情动画的播放
-    Viewer::getInstance()->showEntryAnimation();
-
+    //GameViewer::getInstance()->showEntryAnimation();
     // 系统菜单的展示
-    Viewer::getInstance()->showMenu();
-
+    GameViewer::getInstance()->showMenu();
 
 }
 

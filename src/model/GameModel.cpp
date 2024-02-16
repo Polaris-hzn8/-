@@ -3,40 +3,40 @@
 /// @Mail      : 3453851623@qq.com
 ///****************************************************************************
 
-#include "GameWorld.h"
+#include "GameModel.h"
 
-GameWorld* GameWorld::s_instance = nullptr;
+GameModel* GameModel::s_instance = nullptr;
 
-GameWorld* GameWorld::getInstance()
+GameModel* GameModel::getInstance()
 {
     if (s_instance == nullptr) {
-        s_instance = new GameWorld;
+        s_instance = new GameModel;
     }
     return s_instance;
 }
 
-GameWorld::GameWorld()
+GameModel::GameModel()
 {
     m_curTime = 0;
     m_maxTime = 40;
 }
 
-GameWorld::~GameWorld()
+GameModel::~GameModel()
 {
 
 }
 
-int GameWorld::getCurTime()
+int GameModel::getCurTime()
 {
     return m_curTime;
 }
 
-void GameWorld::setCurTime(int time)
+void GameModel::setCurTime(int time)
 {
     m_curTime = time;
 }
 
-int GameWorld::getMaxTime()
+int GameModel::getMaxTime()
 {
     return m_maxTime;
 }

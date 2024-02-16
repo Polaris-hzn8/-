@@ -25,15 +25,14 @@ GameCore::~GameCore()
 
 }
 
+// 游戏主循环
 void GameCore::startGame()
 {
     m_gameState = true;
-    // 游戏主循环
     while (m_gameState) {
-        // 逻辑刷新
-        logicUpdate();
-        // 显示刷新
-        screenUpdate();
+        logicUpdate();  // 逻辑刷新
+        screenUpdate(); // 显示刷新
+        Sleep(1 * 1000);
     }
 }
 
@@ -44,9 +43,12 @@ void GameCore::gameOver()
 
 void GameCore::logicUpdate()
 {
-    GameWorld *gameWorld = GameWorld::getInstance();
-    if (gameWorld->getCurTime() <= gameWorld->getMaxTime()) {
-        gameWorld->setCurTime(gameWorld->getCurTime() + 1);
+    GameModel *gameModel = GameModel::getInstance();
+    // 游戏时间刷新
+    int curTime = gameModel->getCurTime();
+    int maxTime = gameModel->getMaxTime();
+    if (curTime <= maxTime) {
+        gameModel->setCurTime(curTime + 1);
     } else {
         gameOver();
     }
@@ -54,13 +56,15 @@ void GameCore::logicUpdate()
 
 void GameCore::screenUpdate()
 {
-    GameWorld* gameWorld = GameWorld::getInstance();
-    Viewer* viewer = Viewer::getInstance();
-    if (gameWorld->getCurTime() > gameWorld->getMaxTime()) {
+    GameModel *gameModel = GameModel::getInstance();
+    GameViewer* gameViewer = GameViewer::getInstance();
+    // 游戏时间显示
+    int curTime = gameModel->getCurTime();
+    int maxTime = gameModel->getMaxTime();
+    if (curTime > maxTime) {
         return;
     }
-    //viewer->showTime(gameWorld->getCurTime(), gameWorld->getMaxTime());
-
+    gameViewer->showTime(curTime, maxTime);
 
 
 }

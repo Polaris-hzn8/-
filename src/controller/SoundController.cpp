@@ -37,6 +37,10 @@ void SoundController::playSound(int id)
         参数3：UINT cchReturn              返回字符串的大小，sizeof
         参数4：HANDLE hwndCallback         回调窗口句柄，一般设置为NULL
     */
+    //string command = "play res/";
+    //command += id;
+    //command += ".mp3";
+    //mciSendStringA(command.c_str(), 0, 0, NULL);
     stringstream ss;
     ss << "play res/";
     ss << id;
@@ -53,21 +57,21 @@ void SoundController::stopSound(int id)
     mciSendStringA(ss.str().c_str(), 0, 0, NULL);
 }
 
+/**
+     * PlaySound是Windows用于播放音乐的API函数 只能播放.wav格式的音频
+     * 参数1：要播放声音的字符串（音频文件路径）
+     * 参数2：应用程序的实例句柄 NULL
+     * 参数3：标志组合
+     *  SND_ASYNC       异步方式播放
+     *  SND_FILENAME    指定WAVE文件名
+     *  SND_LOOP        重复播放声音
+     *  直接传入空字符串表示停止播放
+     */
 void SoundController::playBGM()
 {
     if (m_slience) {
         return;
     }
-    /*
-        PlaySound是Windows用于播放音乐的API函数 只能播放.wav格式的音频
-        参数1：要播放声音的字符串（音频文件路径）
-        参数2：应用程序的实例句柄 NULL
-        参数3：标志组合
-            SND_ASYNC       异步方式播放
-            SND_FILENAME    指定WAVE文件名
-            SND_LOOP        重复播放声音
-            直接传入空字符串表示停止播放
-    */
     PlaySound(TEXT("res/bgm.wav"), NULL, SND_ASYNC | SND_LOOP | SND_FILENAME);
 }
 
@@ -76,11 +80,10 @@ void SoundController::stopBGM()
     PlaySound(NULL, NULL, SND_FILENAME);
 }
 
+//停止播放所有声音
 void SoundController::stopAll()
 {
-    // 停止播放背景音乐
-    stopBGM();
-    // 停止播放所有的音效
+    stopBGM();//停止播放背景音乐
     vector<int> soundIds = { 1001 };
     for (int i = 0; i < soundIds.size(); ++i) {
         stopSound(soundIds[i]);

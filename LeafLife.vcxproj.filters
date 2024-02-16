@@ -1,14 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\view\Viewer.cpp">
+    <ClCompile Include="src\view\GameViewer.cpp">
       <Filter>View</Filter>
     </ClCompile>
     <ClCompile Include="src\controller\GameController.cpp">
       <Filter>Controller</Filter>
     </ClCompile>
-    <ClCompile Include="src\model\GameWorld.cpp">
+    <ClCompile Include="src\model\GameModel.cpp">
       <Filter>Model</Filter>
     </ClCompile>
     <ClCompile Include="src\controller\SoundController.cpp">
@@ -17,15 +16,24 @@
     <ClCompile Include="src\controller\GameCore.cpp">
       <Filter>Controller</Filter>
     </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\view\GameInfoView.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="GameRole.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\view\Viewer.h">
+    <ClInclude Include="src\view\GameViewer.h">
       <Filter>View</Filter>
     </ClInclude>
     <ClInclude Include="src\controller\GameController.h">
       <Filter>Controller</Filter>
     </ClInclude>
-    <ClInclude Include="src\model\GameWorld.h">
+    <ClInclude Include="src\model\GameModel.h">
       <Filter>Model</Filter>
     </ClInclude>
     <ClInclude Include="src\controller\SoundController.h">
@@ -33,6 +41,12 @@
     </ClInclude>
     <ClInclude Include="src\controller\GameCore.h">
       <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="src\view\GameInfoView.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="GameRole.h">
+      <Filter>Model</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -44,6 +58,9 @@
     </Filter>
     <Filter Include="Model">
       <UniqueIdentifier>{a13daad1-3af0-4edd-b209-4371bfe7f083}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{cbc762a5-e284-41e6-adee-2d50a9b78aee}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
