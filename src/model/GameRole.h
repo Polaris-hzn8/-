@@ -12,15 +12,15 @@ public:
 	~GameRole();
 
 	int GetCash() { return m_cash; }
-	int SetCash(int val) { m_cash = val; }
+	void SetCash(int val) { m_cash = val; }
 	int GetDeposit() { return m_deposit; }
-	int SetDeposit(int val) { m_deposit = val; }
+	void SetDeposit(int val) { m_deposit = val; }
 	int GetDebt() { return m_debt; }
-	int SetDebt(int val) { m_debt = val; }
+	void SetDebt(int val) { m_debt = val; }
 	int GetHealth() { return m_health; }
-	int SetHealth(int val) { m_health = val; }
+	void SetHealth(int val) { m_health = val; }
 	int GetFame() { return m_fame; }
-	int SetFame(int val) { m_fame = val; }
+	void SetFame(int val) { m_fame = val; }
 private:
 	int m_cash;		// ож╫П
 	int m_deposit;	// ╢Ф©Н

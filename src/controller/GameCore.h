@@ -18,8 +18,8 @@ public:
     virtual ~GameCore();
     static GameCore* getInstance();
 
-    void startGame();
-    void gameOver();
+    void start();       // 游戏开始
+    void finish();      // 游戏结束
 
 private:
     void logicUpdate();     // 逻辑刷新

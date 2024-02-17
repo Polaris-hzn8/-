@@ -17,6 +17,7 @@ GameViewer* GameViewer::getInstance()
 
 GameViewer::GameViewer()
 {
+    m_pGameMainView = nullptr;
 }
 
 GameViewer::~GameViewer()
@@ -77,7 +78,8 @@ void GameViewer::showMenu()
     itemNames.push_back("游戏菜单");
     itemNames.push_back("场景选择");
     itemNames.push_back("游戏帮助");
-    switch (chooseItemInMenu(menuName, itemNames)) {
+    switch (chooseItemInMenu(menuName, itemNames))
+    {
     case 1:
         showGameMenu();     // 游戏菜单
         break;
@@ -107,10 +109,11 @@ void GameViewer::showGameMenu()
     itemNames.push_back("高手排行榜");
     itemNames.push_back("游戏设置");
     itemNames.push_back("返回");
-    switch (chooseItemInMenu(menuName, itemNames)) {
+    switch (chooseItemInMenu(menuName, itemNames))
+    {
     case 1:
         // 新游戏
-        GameCore::getInstance()->startGame();
+        GameCore::getInstance()->start();
         break;
     case 2:
         // 高手排行榜
@@ -154,7 +157,8 @@ void GameViewer::showGameSetting()
     }
     itemNames.push_back("允许黑客攻击银行网络");
     itemNames.push_back("返回");
-    switch (chooseItemInMenu(menuName, itemNames)) {
+    switch (chooseItemInMenu(menuName, itemNames))
+    {
     case 1:
         // 音效设置
         sdctl->setSlience(!slience);
@@ -192,10 +196,10 @@ void GameViewer::showSceneMenu()
     itemNames.push_back("高手排行榜");
     itemNames.push_back("游戏设置");
     itemNames.push_back("退出游戏");
-    switch (chooseItemInMenu(menuName, itemNames)) {
+    switch (chooseItemInMenu(menuName, itemNames))
+    {
     case 1:
         // 新游戏
-
         break;
     case 2:
         // 高手排行榜
@@ -221,7 +225,8 @@ void GameViewer::showHelpMenu()
     itemNames.push_back("高手排行榜");
     itemNames.push_back("游戏设置");
     itemNames.push_back("退出游戏");
-    switch (chooseItemInMenu(menuName, itemNames)) {
+    switch (chooseItemInMenu(menuName, itemNames))
+    {
     case 1:
         // 新游戏
 
@@ -252,4 +257,24 @@ int GameViewer::chooseItemInMenu(string menuName, vector<string> itemNames)
     int opt;
     cin >> opt;
     return opt;
+}
+
+/// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 游戏相关
+
+void GameViewer::startGameDisplay()
+{
+    // 显示游戏主界面
+    if (!m_pGameMainView) {
+        m_pGameMainView = new GameMainView();
+    }
+    system("cls");
+    m_pGameMainView->showGameInfo();
+}
+
+void GameViewer::finishGameDisplay()
+{
+    // 游戏评价显示
+
+
 }

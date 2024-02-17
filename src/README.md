@@ -4,6 +4,8 @@
 
 ### MVC结构设计
 
+- 关于mvc架构、mvp架构、mvvm架构介绍：https://zhuanlan.zhihu.com/p/616953800
+
 整个游戏的软件结构是以MVC的结构设计的，分成3层结构：Model数据模型层、View视图层（用于显示）、Controller层（用于游戏进程控制） 
 
 使用单例模式管理每个层次的类对象，

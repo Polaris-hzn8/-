@@ -22,7 +22,13 @@
     <ClCompile Include="src\view\GameInfoView.cpp">
       <Filter>View</Filter>
     </ClCompile>
-    <ClCompile Include="GameRole.cpp">
+    <ClCompile Include="src\model\GameRole.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\view\GameMainView.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model\GameScene.cpp">
       <Filter>Model</Filter>
     </ClCompile>
   </ItemGroup>
@@ -45,7 +51,13 @@
     <ClInclude Include="src\view\GameInfoView.h">
       <Filter>View</Filter>
     </ClInclude>
-    <ClInclude Include="GameRole.h">
+    <ClInclude Include="src\model\GameRole.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="src\view\GameMainView.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="src\model\GameScene.h">
       <Filter>Model</Filter>
     </ClInclude>
   </ItemGroup>

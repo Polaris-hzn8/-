@@ -21,8 +21,8 @@ public:
     virtual ~GameController();
     static GameController* getInstance();
 
-    void start();   //游戏开始
-    void finish();  //游戏结束
+    void start();   //应用开始
+    void finish();  //应用结束
 
 protected:
 private:
