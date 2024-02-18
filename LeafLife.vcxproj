@@ -23,6 +23,7 @@
     <ClCompile Include="src\controller\GameCore.cpp" />
     <ClCompile Include="src\controller\SoundController.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\model\GameItem.cpp" />
     <ClCompile Include="src\model\GameModel.cpp" />
     <ClCompile Include="src\model\GameRole.cpp" />
     <ClCompile Include="src\model\GameScene.cpp" />
@@ -35,6 +36,7 @@
     <ClInclude Include="src\controller\GameController.h" />
     <ClInclude Include="src\controller\GameCore.h" />
     <ClInclude Include="src\controller\SoundController.h" />
+    <ClInclude Include="src\model\GameItem.h" />
     <ClInclude Include="src\model\GameModel.h" />
     <ClInclude Include="src\model\GameRole.h" />
     <ClInclude Include="src\model\GameScene.h" />

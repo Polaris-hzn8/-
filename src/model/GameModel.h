@@ -5,7 +5,9 @@
 
 #pragma once
 
+#include <map>
 #include <vector>
+#include "GameItem.h"
 #include "GameRole.h"
 #include "GameScene.h"
 
@@ -21,7 +23,8 @@ public:
     void setMaxTime(int time) { m_maxTime = time; }
 
     GameRole* getRole();
-    vector<GameScene*>* getGameScenes() { return &m_gameScenes; };
+    vector<GameScene*>* getGameScenes() { return &m_gameScenes; }
+    map<int, GameItem*>* getGameItems() { return &m_gameItems; }
 
 protected:
 private:
@@ -29,6 +32,8 @@ private:
     int m_maxTime;                      // 游戏最大时间
     GameRole* m_pRole;                  // 游戏角色
     vector<GameScene*> m_gameScenes;    // 游戏场景集合
+    map<int, GameItem*> m_gameItems;    // 游戏商品集合
+
     static GameModel* s_instance;
 };
 

@@ -34,6 +34,9 @@
     <ClCompile Include="src\utility\RandomUtil.cpp">
       <Filter>utility</Filter>
     </ClCompile>
+    <ClCompile Include="src\model\GameItem.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\view\GameViewer.h">
@@ -65,6 +68,9 @@
     </ClInclude>
     <ClInclude Include="src\utility\RandomUtil.h">
       <Filter>utility</Filter>
+    </ClInclude>
+    <ClInclude Include="src\model\GameItem.h">
+      <Filter>Model</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
