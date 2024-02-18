@@ -6,22 +6,24 @@
 #pragma once
 
 #include <string>
+#include "BlackMarket.h"
 using namespace std;
 
-class GameScene
+class RailStation
 {
 public:
-	GameScene();
-	~GameScene();
+	RailStation();
+	~RailStation();
 
 	int GetId() { return m_id; }
-	void SetId(int id) { m_id = id; }
+	void SetId(int val) { m_id = val; }
 	string GetName() { return m_name; }
 	void setName(string name) { m_name = name; }
-protected:
-	
+
+	BlackMarket* getMarket();
 private:
-	int		m_id;		// ³¡¾°id
-	string	m_name;		// ³¡¾°Ãû³Æ
+	int				m_id;
+	string			m_name;
+	BlackMarket*	m_market;
 };
 

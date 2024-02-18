@@ -5,23 +5,28 @@
 
 #pragma once
 
+#include <vector>
 #include <string>
+#include "GameItem.h"
 using namespace std;
 
-class GameScene
+class BlackMarket
 {
 public:
-	GameScene();
-	~GameScene();
+	BlackMarket();
+	~BlackMarket();
 
-	int GetId() { return m_id; }
 	void SetId(int id) { m_id = id; }
+	int GetId() { return m_id; }
+
+	void SetName(string name) { m_name = name; }
 	string GetName() { return m_name; }
-	void setName(string name) { m_name = name; }
-protected:
-	
+
+	vector<GameItem*>* getItemList() { return &m_itemList; }
+
 private:
-	int		m_id;		// 场景id
-	string	m_name;		// 场景名称
+	int					m_id;		// 黑市id
+	string				m_name;		// 黑市名称
+	vector<GameItem*>	m_itemList;	// 黑市商品列表
 };
 

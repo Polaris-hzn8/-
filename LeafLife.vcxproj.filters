@@ -37,6 +37,12 @@
     <ClCompile Include="src\model\GameItem.cpp">
       <Filter>Model</Filter>
     </ClCompile>
+    <ClCompile Include="src\model\BlackMarket.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model\RailStation.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\view\GameViewer.h">
@@ -70,6 +76,12 @@
       <Filter>utility</Filter>
     </ClInclude>
     <ClInclude Include="src\model\GameItem.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="src\model\BlackMarket.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="src\model\RailStation.h">
       <Filter>Model</Filter>
     </ClInclude>
   </ItemGroup>

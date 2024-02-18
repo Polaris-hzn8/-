@@ -26,7 +26,7 @@ void GameMainView::showChoice()
     vector<GameScene*>* gameScenes = gameModel->getGameScenes();
     vector<string> sceneNames;
     for (GameScene* gameScene : *gameScenes) {
-        sceneNames.push_back(gameScene->GetSceneName());
+        sceneNames.push_back(gameScene->GetName());
     }
     sceneNames.push_back("开始新的一天");
     sceneNames.push_back("结束游戏");

@@ -10,6 +10,7 @@
 #include "GameItem.h"
 #include "GameRole.h"
 #include "GameScene.h"
+#include "RailStation.h"
 
 class GameModel {
 public:
@@ -24,16 +25,18 @@ public:
 
     GameRole* getRole();
     vector<GameScene*>* getGameScenes() { return &m_gameScenes; }
+    vector<RailStation*>* getRailStations() { return &m_railStations; }
     map<int, GameItem*>* getGameItems() { return &m_gameItems; }
 
 protected:
 private:
-    int m_curTime;                      // 游戏当前时间
-    int m_maxTime;                      // 游戏最大时间
-    GameRole* m_pRole;                  // 游戏角色
-    vector<GameScene*> m_gameScenes;    // 游戏场景集合
-    map<int, GameItem*> m_gameItems;    // 游戏商品集合
+    int                     m_curTime;      // 游戏当前时间
+    int                     m_maxTime;      // 游戏最大时间
+    GameRole*               m_pRole;        // 游戏角色
+    vector<GameScene*>      m_gameScenes;   // 场景集合
+    vector<RailStation*>    m_railStations; // 地铁站集合
+    map<int, GameItem*>     m_gameItems;    // 商品集合
 
-    static GameModel* s_instance;
+    static GameModel*   s_instance;
 };
 

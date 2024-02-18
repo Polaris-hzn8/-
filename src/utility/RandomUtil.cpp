@@ -7,9 +7,10 @@
 #include <cstdlib>
 #include "RandomUtil.h"
 
+bool RandomUtil::flag = false;
+
 RandomUtil::RandomUtil()
 {
-	flag = false;
 }
 
 RandomUtil::~RandomUtil()

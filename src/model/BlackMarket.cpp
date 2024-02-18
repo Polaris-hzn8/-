@@ -3,14 +3,16 @@
 /// @Mail      : 3453851623@qq.com
 ///****************************************************************************
 
-#include "GameScene.h"
+#include "BlackMarket.h"
 
-GameScene::GameScene()
+BlackMarket::BlackMarket()
 {
 	m_id = 0;
 	m_name = "";
+	// m_itemList≥ı ºªØ
+
 }
 
-GameScene::~GameScene()
+BlackMarket::~BlackMarket()
 {
 }

@@ -8,6 +8,7 @@
 #include <iostream>
 #include "View/GameViewer.h"
 #include "Model/GameModel.h"
+#include "Model/BlackMarket.h"
 #include "Controller/GameCore.h"
 using namespace std;
 
@@ -22,10 +23,11 @@ public:
     void finish();      // 游戏结束
 
 private:
-    void logicUpdate();     // 逻辑刷新
-    void screenUpdate();    // 显示刷新
+    void logicUpdate();                         // 逻辑刷新
+    void MarketListUpdate(BlackMarket *market); // 黑市商品数据更新
+    void screenUpdate();                        // 显示刷新
 
-    bool m_gameState;       // 游戏主循环运行状态
+    bool m_bGameRuning;     // 游戏主循环运行状态
     static GameCore* s_instance;
 };
 

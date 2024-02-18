@@ -35,12 +35,12 @@ public:
 	int GetCount() { return m_count; }
 
 private:
-	int m_id;			//商品编号
-	string m_name;		//商品名称
-	int m_inPrice;		//商品进货价格
-	int m_outPrice;		//商品出售价格
-	int m_minPrice;		//商品波动最小价格
-	int m_maxPrice;		//商品波动最大价格
-	int m_count;		//商品数量
+	int		m_id;			//商品编号
+	string	m_name;			//商品名称
+	int		m_inPrice;		//商品进货价格
+	int		m_outPrice;		//商品出售价格
+	int		m_minPrice;		//商品波动最小价格
+	int		m_maxPrice;		//商品波动最大价格
+	int		m_count;		//商品数量
 };
 

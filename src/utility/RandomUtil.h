@@ -16,4 +16,3 @@ public:
 private:
 	static bool flag;		//是否产生过随机种子
 };
-
