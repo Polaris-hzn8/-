@@ -17,6 +17,12 @@ RandomUtil::~RandomUtil()
 {
 }
 
+/**
+ * \brief 从某个范围中获取随机数
+ * \param min 范围的最小值
+ * \param max 范围的最大值
+ * \return 随机的数字
+ */
 int RandomUtil::getRandomInteger(int min, int max)
 {
 	if (!flag) {
@@ -26,8 +32,16 @@ int RandomUtil::getRandomInteger(int min, int max)
 	return rand() % (max - min) + max;
 }
 
+/**
+ * \brief 根据概率产生产生事件成功或者失败的结果
+ * \param probability 1 ~ 100
+ * \return 事件是否成功
+ */
 bool RandomUtil::getProbabilityResult(int probability)
 {
-	int num = RandomUtil::getRandomInteger(0, 10000);
-	return probability * 100 >= num ? true : false;
+	int randomNum = RandomUtil::getRandomInteger(0, 10000);
+	if (probability * 100 >= randomNum)
+		return true;
+	else
+		return false;
 }

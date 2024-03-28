@@ -33,6 +33,7 @@
     <ClCompile Include="src\view\GameInfoView.cpp" />
     <ClCompile Include="src\view\GameMainView.cpp" />
     <ClCompile Include="src\view\GameViewer.cpp" />
+    <ClCompile Include="src\view\RailStationView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\controller\GameController.h" />
@@ -48,6 +49,7 @@
     <ClInclude Include="src\view\GameInfoView.h" />
     <ClInclude Include="src\view\GameMainView.h" />
     <ClInclude Include="src\view\GameViewer.h" />
+    <ClInclude Include="src\view\RailStationView.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

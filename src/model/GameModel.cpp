@@ -74,7 +74,7 @@ GameModel::GameModel()
     };
     for (int i = 0; i < itemNums; ++i) {
         GameItem* gameItem = new GameItem();
-        gameItem->SetId(i + 1);
+        gameItem->SetId(i);
         gameItem->SetName(itemNames[i]);
         gameItem->SetMinPrice(itemPrice[i][0]);
         gameItem->SetMaxPrice(itemPrice[i][1]);

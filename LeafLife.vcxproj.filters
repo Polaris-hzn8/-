@@ -43,6 +43,9 @@
     <ClCompile Include="src\model\RailStation.cpp">
       <Filter>Model</Filter>
     </ClCompile>
+    <ClCompile Include="src\view\RailStationView.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\view\GameViewer.h">
@@ -83,6 +86,9 @@
     </ClInclude>
     <ClInclude Include="src\model\RailStation.h">
       <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="src\view\RailStationView.h">
+      <Filter>View</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

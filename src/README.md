@@ -10,18 +10,11 @@
 
 使用单例模式管理每个层次的类对象，
 
-- View视图层：`GameViewer` 
-- Model数据层：`GameModel` 
+- View视图层：`GameViewer` 、`GameMainView` 、`GameInfoView` 
+- Model数据层：`GameModel` 、`GameScene` 、`GameRole`  
 - Controller控制层：`GameController`、`GameCore`、`SoundController`，
 
 GameController与GameCore的比较：GameController更偏向于整体游戏的控制，而GameCore主要用于游戏开始的具体内容显示，
-
-普通的管理类：
-
-- View视图层：`GameMainView` 、`GameInfoView` 
-
-- Model数据层：`GameScene` 、`GameRole`  
-- Controller控制层：
 
 ### 运行方式
 
