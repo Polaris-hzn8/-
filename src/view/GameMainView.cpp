@@ -14,9 +14,9 @@ GameMainView::~GameMainView()
 {
 }
 
-void GameMainView::showGameInfo()
+void GameMainView::show()
 {
-	GameInfoView::showGameInfo();
+	GameInfoView::show();
 	showChoice();
 }
 
@@ -26,9 +26,8 @@ void GameMainView::showChoice()
     GameModel* gameModel = GameModel::getInstance();
     vector<GameScene*>* gameScenes = gameModel->getGameScenes();
     vector<string> sceneNames;
-    for (GameScene* gameScene : *gameScenes) {
+    for (GameScene* gameScene : *gameScenes)
         sceneNames.push_back(gameScene->GetName());
-    }
     sceneNames.push_back("开始新的一天");
     sceneNames.push_back("结束游戏");
 
@@ -39,7 +38,8 @@ void GameMainView::showChoice()
     {
         // 地铁站
         RailStationView* stationView = new RailStationView();
-        stationView->showGameInfo();
+        stationView->show();
+        delete stationView;
         break;
     }
     case 2:

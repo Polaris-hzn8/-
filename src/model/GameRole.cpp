@@ -7,11 +7,14 @@
 
 GameRole::GameRole()
 {
-	m_cash = 2000;
-	m_deposit = 0;
-	m_debt = 5500;
-	m_health = 100;
-	m_fame = 100;
+	m_nCash = 2000;
+	m_nDeposit = 0;
+	m_nDebt = 5500;
+	m_nHealth = 100;
+	m_nFame = 100;
+
+	m_nCurStoreUse = 0;
+	m_nMaxStoreCapa = 30;
 }
 
 GameRole::~GameRole()

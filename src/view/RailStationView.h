@@ -6,6 +6,7 @@
 #pragma once
 
 #include "GameInfoView.h"
+#include "Model/BlackMarket.h"
 
 class RailStationView : public GameInfoView
 {
@@ -13,8 +14,8 @@ public:
 	RailStationView();
 	~RailStationView();
 
-	void showGameInfo() override;
+	void show() override;
 private:
-	void showStationNet();
+	void showStationMarket(BlackMarket *market);	// 显示地铁站不同界面（黑市界面）
 };
 

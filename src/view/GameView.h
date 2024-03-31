@@ -15,11 +15,11 @@
 #include "Controller/SoundController.h"
 using namespace std;
 
-class GameViewer {
+class GameView {
 public:
-    GameViewer();
-    virtual ~GameViewer();
-    static GameViewer* getInstance();
+    GameView();
+    virtual ~GameView();
+    static GameView* getInstance();
 
     // ≤Àµ•œ‡πÿ
     void showEntryAnimation();
@@ -43,6 +43,6 @@ private:
     void showHelpMenu();
 private:
     GameMainView* m_pGameMainView;
-    static GameViewer* s_instance;
+    static GameView* s_instance;
 };
 

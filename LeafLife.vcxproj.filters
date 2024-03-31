@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="src\view\GameViewer.cpp">
+    <ClCompile Include="src\view\GameView.cpp">
       <Filter>View</Filter>
     </ClCompile>
     <ClCompile Include="src\controller\GameController.cpp">
@@ -48,7 +48,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\view\GameViewer.h">
+    <ClInclude Include="src\view\GameView.h">
       <Filter>View</Filter>
     </ClInclude>
     <ClInclude Include="src\controller\GameController.h">

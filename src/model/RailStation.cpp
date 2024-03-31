@@ -24,6 +24,9 @@ BlackMarket* RailStation::getMarket()
 {
 	if (!m_market) {
 		m_market = new BlackMarket();
+		m_market->SetId(m_id);			// 地铁站id等于黑市id
+		m_market->SetName(m_name);		// 地铁站name等于黑市name
 	}
 	return m_market;
 }
+

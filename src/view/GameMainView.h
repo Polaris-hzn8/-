@@ -14,7 +14,7 @@ public:
 	GameMainView();
 	~GameMainView();
 	
-	void showGameInfo() override;
+	void show() override;
 	int chooseItemInMenu(string menuName, vector<string> itemNames);
 
 private:

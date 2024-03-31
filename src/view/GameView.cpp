@@ -3,28 +3,28 @@
 /// @Mail      : 3453851623@qq.com
 ///****************************************************************************
 
-#include "GameViewer.h"
+#include "GameView.h"
 
-GameViewer* GameViewer::s_instance = nullptr;
+GameView* GameView::s_instance = nullptr;
 
-GameViewer* GameViewer::getInstance()
+GameView* GameView::getInstance()
 {
     if (!s_instance) {
-        s_instance = new GameViewer();
+        s_instance = new GameView();
     }
     return s_instance;
 }
 
-GameViewer::GameViewer()
+GameView::GameView()
 {
     m_pGameMainView = nullptr;
 }
 
-GameViewer::~GameViewer()
+GameView::~GameView()
 {
 }
 
-void GameViewer::showEntryAnimation()
+void GameView::showEntryAnimation()
 {
     // 播放打字音效
     SoundController::getInstance()->playSound(1001);
@@ -55,7 +55,7 @@ void GameViewer::showEntryAnimation()
     SoundController::getInstance()->stopSound(1001);
 }
 
-void GameViewer::playTypeWrite(string line)
+void GameView::playTypeWrite(string line)
 {
     int speed = 10; // ms
     for (int i = 0; i < line.length(); ++i) {
@@ -71,7 +71,7 @@ void GameViewer::playTypeWrite(string line)
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 主菜单显示
-void GameViewer::showMenu()
+void GameView::showMenu()
 {
     string menuName = "欢迎来到《都市浮生日记》！";
     vector<string> itemNames;
@@ -100,7 +100,7 @@ void GameViewer::showMenu()
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 主菜单->游戏菜单
-void GameViewer::showGameMenu()
+void GameView::showGameMenu()
 {
     system("cls");
     string menuName = "主菜单->游戏菜单";
@@ -137,12 +137,12 @@ void GameViewer::showGameMenu()
     }
 }
 
-void GameViewer::showGameRank()
+void GameView::showGameRank()
 {
 
 }
 
-void GameViewer::showGameSetting()
+void GameView::showGameSetting()
 {
     SoundController* sdctl = SoundController::getInstance();
     bool slience = sdctl->getSlience();
@@ -188,7 +188,7 @@ void GameViewer::showGameSetting()
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 主菜单->场景选择
-void GameViewer::showSceneMenu()
+void GameView::showSceneMenu()
 {
     string menuName = "主菜单->场景菜单";
     vector<string> itemNames;
@@ -217,7 +217,7 @@ void GameViewer::showSceneMenu()
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 主菜单->帮助
-void GameViewer::showHelpMenu()
+void GameView::showHelpMenu()
 {
     string menuName = "主菜单->帮助菜单";
     vector<string> itemNames;
@@ -246,7 +246,7 @@ void GameViewer::showHelpMenu()
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-int GameViewer::chooseItemInMenu(string menuName, vector<string> itemNames)
+int GameView::chooseItemInMenu(string menuName, vector<string> itemNames)
 {
     // 菜单名称
     cout << menuName << endl;
@@ -262,17 +262,16 @@ int GameViewer::chooseItemInMenu(string menuName, vector<string> itemNames)
 /// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 游戏相关
 
-void GameViewer::startGameDisplay()
+void GameView::startGameDisplay()
 {
     // 显示游戏主界面
     if (!m_pGameMainView) {
         m_pGameMainView = new GameMainView();
     }
-    system("cls");
-    m_pGameMainView->showGameInfo();
+    m_pGameMainView->show();
 }
 
-void GameViewer::finishGameDisplay()
+void GameView::finishGameDisplay()
 {
     // 游戏评价显示
 

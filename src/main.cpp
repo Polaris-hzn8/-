@@ -22,7 +22,7 @@ void setTitle(std::string title)
     cmd << title;
     // 命令title + 标题名称
     system(cmd.str().c_str());
-}   
+}
 
 // 设置窗体颜色
 void setColor(char bgColor, char fgColor)

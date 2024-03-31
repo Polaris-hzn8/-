@@ -4,6 +4,7 @@
 /// @Mail		: 3453851623@qq.com
 ///****************************************************************************
 
+#include <algorithm>
 #include "GameCore.h"
 #include "utility/RandomUtil.h"
 
@@ -109,6 +110,8 @@ void GameCore::MarketListUpdate(BlackMarket* market)
         item_ids_random.push_back(item_ids[idx_tmp]); // 被选中的id加入到集合中
         item_ids.erase(item_ids.begin() + idx_tmp);   // 抹除已经被选中的id
     }
+
+    sort(item_ids_random.begin(), item_ids_random.end());
     
     // 2.根据已经挑选好的商品id随机生成价格 并存储到BlackMarket对象中
     vector<GameItem*>* market_item_list = market->getItemList();
@@ -132,12 +135,12 @@ void GameCore::MarketListUpdate(BlackMarket* market)
 void GameCore::screenUpdate()
 {
     GameModel* gameModel = GameModel::getInstance();
-    GameViewer* gameViewer = GameViewer::getInstance();
+    GameView* gameView = GameView::getInstance();
     int curTime = gameModel->getCurTime();
     int maxTime = gameModel->getMaxTime();
     if (curTime > maxTime)
         return;
-    gameViewer->startGameDisplay();
+    gameView->startGameDisplay();
 }
 
 

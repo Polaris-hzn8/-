@@ -5,27 +5,42 @@
 
 #pragma once
 
+#include <vector>
+#include "GameItem.h"
+using namespace std;
+
 class GameRole
 {
 public:
 	GameRole();
 	~GameRole();
 
-	int GetCash() { return m_cash; }
-	void SetCash(int val) { m_cash = val; }
-	int GetDeposit() { return m_deposit; }
-	void SetDeposit(int val) { m_deposit = val; }
-	int GetDebt() { return m_debt; }
-	void SetDebt(int val) { m_debt = val; }
-	int GetHealth() { return m_health; }
-	void SetHealth(int val) { m_health = val; }
-	int GetFame() { return m_fame; }
-	void SetFame(int val) { m_fame = val; }
+	int GetCash() { return m_nCash; }
+	void SetCash(int val) { m_nCash = val; }
+	int GetDeposit() { return m_nDeposit; }
+	void SetDeposit(int val) { m_nDeposit = val; }
+	int GetDebt() { return m_nDebt; }
+	void SetDebt(int val) { m_nDebt = val; }
+	int GetHealth() { return m_nHealth; }
+	void SetHealth(int val) { m_nHealth = val; }
+	int GetFame() { return m_nFame; }
+	void SetFame(int val) { m_nFame = val; }
+
+	vector<GameItem*>* getGoods() { return &m_pItems; }
+	int GetCurStoreUse() { return m_nCurStoreUse; }
+	void SetCurStoreUse(int val) { m_nCurStoreUse = val; }
+	int GetMaxStoreCapa() { return m_nMaxStoreCapa; }
+	void SeMaxStoreCapa(int val) { m_nMaxStoreCapa = val; }
+
 private:
-	int m_cash;		// 现金
-	int m_deposit;	// 存款
-	int m_debt;		// 负债
-	int m_health;	// 健康状况
-	int m_fame;		// 玩家名声
+	int m_nCash;		// 现金
+	int m_nDeposit;		// 存款
+	int m_nDebt;		// 负债
+	int m_nHealth;		// 健康状况
+	int m_nFame;		// 玩家名声
+
+	vector<GameItem*> m_pItems;	// 出租屋中的货物
+	int m_nCurStoreUse;			// 仓库已使用容量
+	int m_nMaxStoreCapa;		// 仓库最大容量
 };
 

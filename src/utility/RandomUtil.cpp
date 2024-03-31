@@ -29,7 +29,7 @@ int RandomUtil::getRandomInteger(int min, int max)
 		srand((unsigned int)time(NULL));
 		flag = true;
 	}
-	return rand() % (max - min) + max;
+	return rand() % (max - min) + min;
 }
 
 /**

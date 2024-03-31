@@ -17,10 +17,11 @@ class GameInfoView
 public:
 	GameInfoView();
 	~GameInfoView();
+	// 封装菜单选择列表
+	int chooseItemInMenu(string menuName, vector<string> itemNames);
 protected:
-	virtual void showGameInfo();
+	virtual void show();
 private:
-	void init();
 	void showTime();		// 展示游戏时间
 	void showEvent();		// 展示随机事件
 	void showRoleInfo();	// 展示玩家角色属性

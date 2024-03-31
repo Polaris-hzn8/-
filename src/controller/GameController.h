@@ -5,7 +5,7 @@
 
 #pragma once
 
-#include "View/GameViewer.h"
+#include "View/GameView.h"
 #include "Controller/SoundController.h"
 
 /**

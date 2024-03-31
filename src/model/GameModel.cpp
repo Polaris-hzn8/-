@@ -25,7 +25,7 @@ GameModel::GameModel()
     string names[] = {"地铁站", "银行", "邮局", "医院", "机场", "租房中介", "网吧"};
     for (int i = 0; i < sizeof(names)/sizeof(*names); ++i) {
         GameScene* gameScene = new GameScene();
-        gameScene->SetId(i + 1);
+        gameScene->SetId(i);
         gameScene->setName(names[i]);
         m_gameScenes.push_back(gameScene);
     }
@@ -45,7 +45,7 @@ GameModel::GameModel()
     };
     for (int i = 0; i < sizeof(stationNames) / sizeof(*stationNames); ++i) {
         RailStation* railStation = new RailStation();
-        railStation->SetId(i + 1);
+        railStation->SetId(i);
         railStation->setName(stationNames[i]);
         m_railStations.push_back(railStation);
     }

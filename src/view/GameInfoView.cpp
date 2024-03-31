@@ -12,21 +12,30 @@ GameInfoView::GameInfoView()
     m_pRole = nullptr;
 }
 
-void GameInfoView::init()
-{
-    GameModel* gameModel = GameModel::getInstance();
-    m_curTime = gameModel->getCurTime();
-    m_maxTime = gameModel->getMaxTime();
-    m_pRole = gameModel->getRole();
-}
-
 GameInfoView::~GameInfoView()
 {
 }
 
-void GameInfoView::showGameInfo()
+int GameInfoView::chooseItemInMenu(string menuName, vector<string> itemNames)
 {
-    init();
+    // 菜单名称
+    cout << menuName << endl;
+    for (int i = 0; i < itemNames.size(); ++i) {
+        cout << i + 1 << "." << itemNames[i] << endl;
+    }
+    cout << "请做出你的选择：";
+    int opt;
+    cin >> opt;
+    return opt;
+}
+
+void GameInfoView::show()
+{
+    system("cls");
+    GameModel* gameModel = GameModel::getInstance();
+    m_curTime = gameModel->getCurTime();
+    m_maxTime = gameModel->getMaxTime();
+    m_pRole = gameModel->getRole();
     // 显示时间
     showTime();
     // 显示随机事件
