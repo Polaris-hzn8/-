@@ -32,7 +32,7 @@
     <ClCompile Include="src\utility\RandomUtil.cpp" />
     <ClCompile Include="src\view\GameInfoView.cpp" />
     <ClCompile Include="src\view\GameMainView.cpp" />
-    <ClCompile Include="src\view\GameView.cpp" />
+    <ClCompile Include="src\view\GameMenuView.cpp" />
     <ClCompile Include="src\view\RailStationView.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -48,7 +48,7 @@
     <ClInclude Include="src\utility\RandomUtil.h" />
     <ClInclude Include="src\view\GameInfoView.h" />
     <ClInclude Include="src\view\GameMainView.h" />
-    <ClInclude Include="src\view\GameView.h" />
+    <ClInclude Include="src\view\GameMenuView.h" />
     <ClInclude Include="src\view\RailStationView.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

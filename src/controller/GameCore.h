@@ -6,7 +6,7 @@
 #pragma once
 
 #include <iostream>
-#include "View/GameView.h"
+#include "View/GameMenuView.h"
 #include "Model/GameModel.h"
 #include "Model/BlackMarket.h"
 #include "Controller/GameCore.h"

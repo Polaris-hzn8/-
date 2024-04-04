@@ -135,12 +135,12 @@ void GameCore::MarketListUpdate(BlackMarket* market)
 void GameCore::screenUpdate()
 {
     GameModel* gameModel = GameModel::getInstance();
-    GameView* gameView = GameView::getInstance();
+    GameMenuView* gameMenuView = GameMenuView::getInstance();
     int curTime = gameModel->getCurTime();
     int maxTime = gameModel->getMaxTime();
     if (curTime > maxTime)
         return;
-    gameView->startGameDisplay();
+    gameMenuView->startGameDisplay();
 }
 
 

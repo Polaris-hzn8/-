@@ -1,6 +1,8 @@
 ///****************************************************************************
-/// @Author    : Polaris-hzn8
-/// @Mail      : 3453851623@qq.com
+/// @Author		: Polaris-hzn8
+/// @CreateTime	: 2024-04-04 10:39
+/// @Mail		: 3453851623@qq.com
+/// @brief		: 菜单界面视图类
 ///****************************************************************************
 
 #pragma once
@@ -15,11 +17,11 @@
 #include "Controller/SoundController.h"
 using namespace std;
 
-class GameView {
+class GameMenuView {
 public:
-    GameView();
-    virtual ~GameView();
-    static GameView* getInstance();
+    GameMenuView();
+    virtual ~GameMenuView();
+    static GameMenuView* getInstance();
 
     // 菜单相关
     void showEntryAnimation();
@@ -43,6 +45,6 @@ private:
     void showHelpMenu();
 private:
     GameMainView* m_pGameMainView;
-    static GameView* s_instance;
+    static GameMenuView* s_instance;
 };
 

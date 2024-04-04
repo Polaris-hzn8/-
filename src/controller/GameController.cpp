@@ -30,7 +30,7 @@ void GameController::start()
     // 开场剧情动画的播放
     //GameViewer::getInstance()->showEntryAnimation();
     // 系统菜单的展示
-    GameView::getInstance()->showMenu();
+    GameMenuView::getInstance()->showMenu();
 
 }
 
