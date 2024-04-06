@@ -30,6 +30,7 @@
     <ClCompile Include="src\model\GameScene.cpp" />
     <ClCompile Include="src\model\RailStation.cpp" />
     <ClCompile Include="src\utility\RandomUtil.cpp" />
+    <ClCompile Include="src\view\BlackMarketView.cpp" />
     <ClCompile Include="src\view\GameInfoView.cpp" />
     <ClCompile Include="src\view\GameMainView.cpp" />
     <ClCompile Include="src\view\GameMenuView.cpp" />
@@ -46,6 +47,7 @@
     <ClInclude Include="src\model\GameScene.h" />
     <ClInclude Include="src\model\RailStation.h" />
     <ClInclude Include="src\utility\RandomUtil.h" />
+    <ClInclude Include="src\view\BlackMarketView.h" />
     <ClInclude Include="src\view\GameInfoView.h" />
     <ClInclude Include="src\view\GameMainView.h" />
     <ClInclude Include="src\view\GameMenuView.h" />

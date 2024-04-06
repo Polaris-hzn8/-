@@ -1,6 +1,8 @@
 ///****************************************************************************
-/// @Author    : Polaris-hzn8
-/// @Mail      : 3453851623@qq.com
+/// @Author		: Polaris-hzn8
+/// @CreateTime	: 2024-03-26 22:57
+/// @Mail		: 3453851623@qq.com
+/// @Brief		: 游戏地铁站界面视图类
 ///****************************************************************************
 
 #pragma once
@@ -16,6 +18,6 @@ public:
 
 	void show() override;
 private:
-	void showStationMarket(BlackMarket *market);	// 显示地铁站不同界面（黑市界面）
+	void showStationNet();
 };
 
