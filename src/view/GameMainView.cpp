@@ -19,10 +19,10 @@ GameMainView::~GameMainView()
 void GameMainView::show()
 {
 	GameInfoView::show();
-	showChoice();
+    showMain();
 }
 
-void GameMainView::showChoice()
+void GameMainView::showMain()
 {
     // 获取功能项名称集合
     GameModel* gameModel = GameModel::getInstance();

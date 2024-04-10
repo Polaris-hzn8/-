@@ -13,8 +13,8 @@ GameRole::GameRole()
 	m_nHealth = 100;
 	m_nFame = 100;
 
-	m_nCurStoreUse = 0;
-	m_nMaxStoreCapa = 30;
+	m_nCurDepotUse = 0;
+	m_nMaxDepotCapa = 30;
 }
 
 GameRole::~GameRole()

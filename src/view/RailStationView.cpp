@@ -38,7 +38,7 @@ void RailStationView::showStationNet()
 
 	// 在玩家选择地铁站后 显示具体的黑市信息
 	RailStation* pRailStation = railStations->at(nId);							// 根据id获取地铁站对象
-	BlackMarket* pBlackMarket = pRailStation->getMarket();						// 根据地铁站对象获取黑市对象
+	BlackMarket* pBlackMarket = pRailStation->getMarket();						// 根据地铁站对象创建黑市对象
 	BlackMarketView* pBlackMarketView = BlackMarketView::create(pBlackMarket);	// 根据黑市对象创建黑市视图对象
 	pBlackMarketView->show();
 }

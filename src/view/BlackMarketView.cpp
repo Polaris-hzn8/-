@@ -5,6 +5,8 @@
 /// @Brief		: 
 ///****************************************************************************
 
+#include "Windows.h"
+#include "GameMenuView.h"
 #include "BlackMarketView.h"
 
 BlackMarketView::BlackMarketView()
@@ -36,79 +38,145 @@ BlackMarketView* BlackMarketView::create(BlackMarket* pMarket)
 void BlackMarketView::show()
 {
 	GameInfoView::show();
-	// 刷新列表显示
-	updateShowList(m_pBlackMarket);
+	// 显示黑市商品列表
+	showMarketList(m_pBlackMarket);
 	// 显示黑市交易功能菜单列表
-	showMenu();
+	showOptionMenu();
 }
 
-void BlackMarketView::updateShowList(BlackMarket* pMarket)
+void BlackMarketView::showMarketList(BlackMarket* pMarket)
 {
 	// 实现游戏基本信息
 	GameInfoView::show();
 	// 黑市商品列表显示
 	cout << "您当前正在" << pMarket->GetName() << "的黑市交易所,今日黑市商品如下:" << endl;
 	vector<GameItem*>* pItemList = pMarket->getItemList();
-	for (int i = 1; i <= pItemList->size(); ++i)
+	for (int i = 0; i < pItemList->size(); ++i)
 	{
-		GameItem* gameItem = (*pItemList)[i - 1];
-		string itemName = gameItem->GetName();			// 商品名称
-		int outPrice = gameItem->GetOutPrice();			// 商品出售价格
-		int count = gameItem->GetCount();				// 商品剩余数量
+		GameItem* gameItem = (*pItemList)[i];
+		int nItemId = gameItem->GetId();					// 商品Id
+		string strItemName = gameItem->GetName();			// 商品名称
+		int nOutPrice = gameItem->GetOutPrice();			// 商品出售价格
+		int nCount = gameItem->GetCount();					// 商品剩余数量
 
 		char space = ' ';
-		string strPrice = to_string(outPrice);
-		string space_n1(15 - itemName.length(), ' ');
-		string space_n2(6 - strPrice.length(), ' ');
+		string strOutPrice = to_string(nOutPrice);
+		string space_n1(15 - strItemName.length(), ' ');
+		string space_n2(6 - strOutPrice.length(), ' ');
 
 		char buff[1024];
-		sprintf_s(buff, "%d.%s%sPrice:%d%s$ Remains:%d", i, itemName.c_str(), space_n1.c_str(), outPrice, space_n2.c_str(), count);
+		sprintf_s(buff, "%d.%s%sPrice:%d%s$ Remains:%d", nItemId, strItemName.c_str(), space_n1.c_str(), nOutPrice, space_n2.c_str(), nCount);
 		cout << buff << endl;
 	}
 
 	cout << string(80, '*') << endl;
 
-	// 出租屋货物列表显示
+	// 玩家出租屋货物列表展示
 	GameRole* playerInfo = GameModel::getInstance()->getRole();
-	vector<GameItem*>* playerGoods = playerInfo->getGoods();
-	int nCurStoreUse = playerInfo->GetCurStoreUse();
-	int nMaxStoreCapa = playerInfo->GetMaxStoreCapa();
+	vector<GameItem*>* playerGoods = playerInfo->GetDepotItems();
+	int nCurDepotUse = playerInfo->GetCurDepotUse();
+	int nMaxDepotCapa = playerInfo->GetMaxDepotCapa();
 	char buff[1024];
-	sprintf_s(buff, "出租屋货物列表如下(%d/%d):", nCurStoreUse, nMaxStoreCapa);
+	sprintf_s(buff, "出租屋货物列表如下(%d/%d):", nCurDepotUse, nMaxDepotCapa);
 	cout << buff << endl;
-	if (nCurStoreUse == 0)
+	if (nCurDepotUse == 0)
 	{
 		cout << "空无一物" << endl;
 	}
 	else
 	{
-		for (int i = 1; i <= playerGoods->size(); ++i)
+		for (int i = 0; i < playerGoods->size(); ++i)
 		{
-			GameItem* gameItem = (*playerGoods)[i - 1];
-			string itemName = gameItem->GetName();			// 商品名称
-			int outPrice = gameItem->GetOutPrice();			// 商品出售价格
-			int count = gameItem->GetCount();				// 商品剩余数量
+			GameItem* gameItem = (*playerGoods)[i];
+			int nItemId = gameItem->GetId();					// 商品Id
+			string strItemName = gameItem->GetName();			// 商品名称
+			int nInPrice = gameItem->GetInPrice();				// 商品购入平均价格
+			int nCount = gameItem->GetCount();					// 商品剩余数量
 
 			char space = ' ';
-			string strPrice = to_string(outPrice);
-			string space_n1(15 - itemName.length(), ' ');
-			string space_n2(6 - strPrice.length(), ' ');
+			string strInPrice = to_string(nInPrice);
+			string space_n1(15 - strItemName.length(), ' ');
+			string space_n2(6 - strInPrice.length(), ' ');
 
 			char buff[1024];
-			sprintf_s(buff, "%d.%s%sPrice:%d%s$ Remains:%d", i, itemName.c_str(), space_n1.c_str(), outPrice, space_n2.c_str(), count);
+			sprintf_s(buff, "%d.%s%sInPrice:%d%s$ Remains:%d", nItemId, strItemName.c_str(), space_n1.c_str(), nInPrice, space_n2.c_str(), nCount);
 			cout << buff << endl;
 		}
 	}
 }
 
-void BlackMarketView::showMenu()
+void BlackMarketView::showOptionMenu()
 {
 	cout << string(80, '*') << endl;
-	string choice;
-	cin >> choice;
-	
+	vector<string> vetItemNames;
+	vetItemNames.push_back("购买");
+	vetItemNames.push_back("出售");
+	vetItemNames.push_back("离开");
 
+	string menuName = "请选择您的操作";
+	int nType = chooseItemInMenu(menuName, vetItemNames);
+	switch (nType)
+	{
+	case 1:// 购买商品
+	{
+		cout << "您要购买的商品编号是:" << endl;
+		int nGoodsId;
+		cin >> nGoodsId;
+		bool bIsItemExist = m_pBlackMarket->IsItemExist(nGoodsId);
+		if (bIsItemExist)
+		{
+			cout << "您要购买的商品数量是:" << endl;
+			int nGoodsNum;
+			cin >> nGoodsNum;
+			int nRet = m_pBlackMarket->SellItem(nGoodsId, nGoodsNum);
+			switch (nRet)
+			{
+			case 0:
+				cout << "交易成功!" << endl;
+				break;
+			case 1:
+				cout << "交易失败!商品不存在!请输入正确的商品编号!" << endl;
+				break;
+			case 2:
+				cout << "交易失败!购买数量大于商店剩余商品数量!" << endl;
+				break;
+			case 3:
+				cout << "交易失败!您的余额不足!" << endl;
+				break;
+			case 4:
+				cout << "交易失败!您的仓库容量不足!" << endl;
+				break;
+			}
+		}
+		else
+		{
+			cout << "商品编号不存在，请输入正确的商品编号!" << endl;
+		}
+		
+		Sleep(1000 * 2);
 
+		BlackMarketView::show();
+		break;
+	}
+	case 2:// 出售商品
+	{
+		cout << "您要出售的商品编号是:" << endl;
+		string choice;
+		cin >> choice;
+		break;
+	}
+	case 3:// 离开黑市
+	{
+		cout << "正在离开商店..." << endl;
+		Sleep(500);
+		GameMenuView::getInstance()->EnterGameMainView();
+	}
+	default:
+	{
+		cout << "请输入有效的操作类型!!!" << endl;
+		Sleep(1000);
+		BlackMarketView::show();
+	}
 
-
+	}
 }

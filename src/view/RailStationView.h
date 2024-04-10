@@ -17,7 +17,9 @@ public:
 	~RailStationView();
 
 	void show() override;
-private:
 	void showStationNet();
+private:
+	
+
 };
 

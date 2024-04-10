@@ -58,37 +58,38 @@ void GameInfoView::showEvent()
 {
 }
 
-void printLine(int width)
-{
-    for (int i = 0; i < width; ++i) {
-        cout << "*";
-    }
-    cout << endl;
-}
-
-string formatRoleProp(int id, string prop, int value, string unit = "")
-{
-    char buff[1024];
-    sprintf_s(buff, "%d.%s:%d%s", id, prop.c_str(), value, unit.c_str());
-    return string(buff);
-}
-
 void GameInfoView::showRoleInfo()
 {
     int width = 62;
-    printLine(width);
+    cout << string(width, '*') << endl;
+
+    // 组装字符串str
+    auto formatString = [](int nId, string strItemName, int nValue, string strUnit, int nWidth)
+    {
+        int width = 62;
+
+        char space = ' ';
+        string space_n1(6 - strItemName.length(), ' ');
+        string space_n2(3, ' ');
+        string space_n3(12 - to_string(nValue).length(), ' ');
+
+        char buff[1024];
+        sprintf_s(buff, "*  %d.%s%s:%s%d%s%s", nId, strItemName.c_str(),
+            space_n1.c_str(), space_n2.c_str(), nValue, space_n3.c_str(), strUnit.c_str());
+
+        return string(buff);
+    };
+    
     vector<string> roleInfos;
-    roleInfos.push_back("玩家信息：");
-    roleInfos.push_back(formatRoleProp(1, "现金", m_pRole->GetCash(), "元"));
-    roleInfos.push_back(formatRoleProp(2, "存款", m_pRole->GetDeposit(), "元"));
-    roleInfos.push_back(formatRoleProp(3, "负债", m_pRole->GetDebt(), "元"));
-    roleInfos.push_back(formatRoleProp(4, "健康", m_pRole->GetHealth(), "HP"));
-    roleInfos.push_back(formatRoleProp(5, "名声", m_pRole->GetFame(), "FM"));
+    roleInfos.push_back("玩家信息:");
+    roleInfos.push_back(formatString(1, "现金", m_pRole->GetCash(), "元", width));
+    roleInfos.push_back(formatString(2, "存款", m_pRole->GetDeposit(), "元", width));
+    roleInfos.push_back(formatString(3, "负债", m_pRole->GetDebt(), "元", width));
+    roleInfos.push_back(formatString(4, "健康", m_pRole->GetHealth(), "HP", width));
+    roleInfos.push_back(formatString(5, "名声", m_pRole->GetFame(), "FM", width));
+    for (string str:roleInfos)
+        cout << str << endl;
 
-    for (string str:roleInfos) {
-        cout << "*  " << str << string(width - str.length() - 4, ' ') << "*" << endl;
-    }
-
-    printLine(width);
+    cout << string(width, '*') << endl;
 }
 

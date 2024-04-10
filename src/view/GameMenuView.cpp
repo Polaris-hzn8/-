@@ -264,7 +264,7 @@ int GameMenuView::chooseItemInMenu(string menuName, vector<string> itemNames)
 /// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 游戏相关
 
-void GameMenuView::startGameDisplay()
+void GameMenuView::EnterGameMainView()
 {
     // 显示游戏主界面
     if (!m_pGameMainView) {
@@ -273,7 +273,7 @@ void GameMenuView::startGameDisplay()
     m_pGameMainView->show();
 }
 
-void GameMenuView::finishGameDisplay()
+void GameMenuView::EnterGameFinishView()
 {
     // 游戏评价显示
 

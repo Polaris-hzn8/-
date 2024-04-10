@@ -26,11 +26,11 @@ public:
 	int GetFame() { return m_nFame; }
 	void SetFame(int val) { m_nFame = val; }
 
-	vector<GameItem*>* getGoods() { return &m_pItems; }
-	int GetCurStoreUse() { return m_nCurStoreUse; }
-	void SetCurStoreUse(int val) { m_nCurStoreUse = val; }
-	int GetMaxStoreCapa() { return m_nMaxStoreCapa; }
-	void SeMaxStoreCapa(int val) { m_nMaxStoreCapa = val; }
+	vector<GameItem*>* GetDepotItems() { return &m_pDepotItems; }
+	int GetCurDepotUse() { return m_nCurDepotUse; }
+	void SetCurDepotUse(int val) { m_nCurDepotUse = val; }
+	int GetMaxDepotCapa() { return m_nMaxDepotCapa; }
+	void SeMaxDepotCapa(int val) { m_nMaxDepotCapa = val; }
 
 private:
 	int m_nCash;		// 现金
@@ -39,8 +39,8 @@ private:
 	int m_nHealth;		// 健康状况
 	int m_nFame;		// 玩家名声
 
-	vector<GameItem*> m_pItems;	// 出租屋中的货物
-	int m_nCurStoreUse;			// 仓库已使用容量
-	int m_nMaxStoreCapa;		// 仓库最大容量
+	vector<GameItem*> m_pDepotItems;	// 仓库中的货物
+	int m_nCurDepotUse;					// 仓库已使用容量
+	int m_nMaxDepotCapa;				// 仓库最大容量
 };
 

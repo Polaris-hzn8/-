@@ -20,6 +20,6 @@ public:
 	int chooseItemInMenu(string menuName, vector<string> itemNames);
 
 private:
-	void showChoice();
+	void showMain();
 };
 

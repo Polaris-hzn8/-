@@ -53,20 +53,23 @@ void GameCore::finish()
 void GameCore::logicUpdate()
 {
     GameModel* gameModel = GameModel::getInstance();
+
     // 判定游戏是否结束
     int curTime = gameModel->getCurTime();
     int maxTime = gameModel->getMaxTime();
     if (curTime > maxTime)
-    {
         finish();
-    }
+
     // 刷新当前游戏时间
     gameModel->setCurTime(curTime + 1);
+
     // 刷新玩家存款与欠债数据
     GameRole* pRole = gameModel->getRole();
+
     // 刷新玩家存款数据
     int deposit = (int)pRole->GetDeposit() * 1.05f;
     pRole->SetDeposit(deposit);
+
     // 刷新玩家欠债数据
     int debet = (int)pRole->GetDebt() * 1.1f;
     pRole->SetDebt(debet);
@@ -92,40 +95,46 @@ void GameCore::logicUpdate()
 void GameCore::MarketListUpdate(BlackMarket* market)
 {
     // 1.获取所有的物品数据
-    map<int, GameItem*>* pGameItems = GameModel::getInstance()->getGameItems();
-    // 随机产生黑市今日上架的商品数量(5~7件)
-    int item_nums = RandomUtil::getRandomInteger(5, 7);
+    map<int, GameItem*>* pGameItemsMap = GameModel::getInstance()->getGameItems();
+    int nTotalNums = pGameItemsMap->size();                                     // 随机的最多数量
+    int nPartialNums = nTotalNums / 2;                                          // 随机的最少数量
+    int nTodayNums = RandomUtil::getRandomInteger(nPartialNums, nTotalNums);    // 随机产生黑市今日上架的商品数量
+    
     // 从初始物品数据中随机挑选itemNums个物品数量 保存到集合中 并保证不会有重复商品被选中
-    // 获取全部物品的id值保存到itemIds数组中
-    vector<int> item_ids;
-    for (int i = 0; i < pGameItems->size(); ++i)
-        item_ids.push_back(i);
-    // 从itemIds数组中随机挑选出黑市今日准备上架的商品id
-    vector<int> item_ids_random;
-    for (int i = 0; i < item_nums; ++i)
+    // 获取全部物品的id值保存到vctItemIds数组中
+    vector<int> vctItemIds;
+    for (pair<int, GameItem*> GameItemPair : *pGameItemsMap)
     {
-        int idx_min = 0;
-        int idx_max = item_ids.size() - 1;
-        int idx_tmp = RandomUtil::getRandomInteger(idx_min, idx_max);
-        item_ids_random.push_back(item_ids[idx_tmp]); // 被选中的id加入到集合中
-        item_ids.erase(item_ids.begin() + idx_tmp);   // 抹除已经被选中的id
+        int tmpId = GameItemPair.first;
+        vctItemIds.push_back(tmpId);
     }
 
-    sort(item_ids_random.begin(), item_ids_random.end());
+    // 从itemIds数组中随机挑选出黑市今日准备上架的商品id
+    vector<int> vctItemIdsRandom;
+    for (int i = 0; i < nTodayNums; ++i)
+    {
+        int idx_min = 0;
+        int idx_max = vctItemIds.size() - 1;
+        int idx_tmp = RandomUtil::getRandomInteger(idx_min, idx_max);
+        vctItemIdsRandom.push_back(vctItemIds[idx_tmp]); // 被选中的id加入到集合中
+        vctItemIds.erase(vctItemIds.begin() + idx_tmp);   // 抹除已经被选中的id
+    }
+
+    sort(vctItemIdsRandom.begin(), vctItemIdsRandom.end());
     
     // 2.根据已经挑选好的商品id随机生成价格 并存储到BlackMarket对象中
-    vector<GameItem*>* market_item_list = market->getItemList();
-    market_item_list->clear();
-    for (int item_id : item_ids_random)
+    vector<GameItem*>* vctMarketItemList = market->getItemList();
+    vctMarketItemList->clear();
+    for (int nitemId : vctItemIdsRandom)
     {
-        GameItem* item = pGameItems->at(item_id);
-        GameItem* commodity = new GameItem();
-        int commodity_price = RandomUtil::getRandomInteger(item->GetMinPrice(), item->GetMaxPrice());
-        commodity->SetId(item->GetId());
-        commodity->SetName(item->GetName());
-        commodity->SetOutPrice(commodity_price);
-        commodity->SetCount(100);
-        market_item_list->push_back(commodity);
+        GameItem* pItem = pGameItemsMap->at(nitemId);
+        GameItem* pCommodity = new GameItem();
+        int commodity_price = RandomUtil::getRandomInteger(pItem->GetMinPrice(), pItem->GetMaxPrice());
+        pCommodity->SetId(pItem->GetId());
+        pCommodity->SetName(pItem->GetName());
+        pCommodity->SetOutPrice(commodity_price);
+        pCommodity->SetCount(100);
+        vctMarketItemList->push_back(pCommodity);
     }
 }
 
@@ -140,7 +149,7 @@ void GameCore::screenUpdate()
     int maxTime = gameModel->getMaxTime();
     if (curTime > maxTime)
         return;
-    gameMenuView->startGameDisplay();
+    gameMenuView->EnterGameMainView();
 }
 
 

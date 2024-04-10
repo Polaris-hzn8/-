@@ -30,10 +30,11 @@ protected:
 	BlackMarketView();
 
 private:
-	BlackMarket* m_pBlackMarket;
 	// 商品和货物列表的刷新显示
-	void updateShowList(BlackMarket* pMarket);
+	void showMarketList(BlackMarket* pMarket);
 	// 黑市交易功能菜单列表
-	void showMenu();
+	void showOptionMenu();
+	// 黑市对象数据
+	BlackMarket* m_pBlackMarket;
 };
 

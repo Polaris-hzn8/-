@@ -37,8 +37,8 @@ public:
     int chooseItemInMenu(string menuName, vector<string> itemNames);
 
     // 游戏相关
-    void startGameDisplay();
-    void finishGameDisplay();
+    void EnterGameMainView();       // 进入游戏开始界面
+    void EnterGameFinishView();     // 进入游戏结算界面
 protected:
 private:
     void playTypeWrite(std::string line);

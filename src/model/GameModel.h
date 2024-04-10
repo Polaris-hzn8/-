@@ -25,14 +25,20 @@ public:
     virtual ~GameModel();
     static GameModel* getInstance();
 
+    void initData();    // 初始化所有数据
+
     int getCurTime() { return m_curTime; }
     void setCurTime(int time) { m_curTime = time; }
     int getMaxTime() { return m_maxTime; }
     void setMaxTime(int time) { m_maxTime = time; }
 
+    // 获取角色信息
     GameRole* getRole();
+    // 获取游戏场景信息
     vector<GameScene*>* getGameScenes() { return &m_gameScenes; }
+    // 获取地铁站信息
     vector<RailStation*>* getRailStations() { return &m_railStations; }
+    // 获取游戏商品信息
     map<int, GameItem*>* getGameItems() { return &m_gameItems; }
 
 protected:
