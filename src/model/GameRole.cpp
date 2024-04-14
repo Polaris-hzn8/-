@@ -23,17 +23,6 @@ GameRole::~GameRole()
 }
 
 /**
- * 判断商品是否存在
- * \param nGoodsId
- * \return
- */
-bool GameRole::IsItemExist(int nGoodsId)
-{
-	GameItem* pDepotItem = GetItemFromDepot(nGoodsId);
-	return (pDepotItem == nullptr) ? false : true;
-}
-
-/**
  * \brief 玩家出售商品
  * \param nGoodsId		商品Id
  * \param nSellItemNum	商品数量

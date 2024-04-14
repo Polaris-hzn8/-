@@ -32,12 +32,10 @@ public:
 	int GetMaxDepotCapa() { return m_nMaxDepotCapa; }
 	void SeMaxDepotCapa(int val) { m_nMaxDepotCapa = val; }
 public:
-	// 判断商品是否存在
-	bool IsItemExist(int nGoodsId);
+	// 通过Id获取仓库物品
+	GameItem* GetItemFromDepot(int nGoodsId);
 	// 游戏角色出售商品
 	int SellItem(int nGoodsId, int nSellItemNum, int nCurPrice);
-private:
-	GameItem* GetItemFromDepot(int nGoodsId);
 private:
 	int m_nCash;		// 现金
 	int m_nDeposit;		// 存款
