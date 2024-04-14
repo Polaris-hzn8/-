@@ -47,6 +47,7 @@ void GameMainView::showMain()
     case 2:
     {
         // 银行
+        int tmp = 1;
         break;
     }
     case 3:
@@ -88,6 +89,8 @@ void GameMainView::showMain()
     {
         break;
     }
+
+    
     }
 }
 
@@ -95,9 +98,8 @@ int GameMainView::chooseItemInMenu(string menuName, vector<string> itemNames)
 {
     // 菜单名称
     cout << menuName << endl;
-    for (int i = 0; i < itemNames.size(); ++i) {
+    for (int i = 0; i < itemNames.size(); ++i)
         cout << i + 1 << "." << itemNames[i] << endl;
-    }
     cout << "请做出你的选择：";
     int opt;
     cin >> opt;

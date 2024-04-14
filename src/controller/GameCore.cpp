@@ -33,6 +33,7 @@ void GameCore::start()
     m_bGameRuning = true;
     while (m_bGameRuning)
     {
+
         logicUpdate();  // Âß¼­Ë¢ÐÂ
         screenUpdate(); // ÏÔÊ¾Ë¢ÐÂ
     }

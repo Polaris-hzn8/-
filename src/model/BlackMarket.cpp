@@ -18,25 +18,14 @@ BlackMarket::~BlackMarket()
 }
 
 /**
- * 判断商品是否存在
- * \param nGoodsId
- * \return 
- */
-bool BlackMarket::IsItemExist(int nGoodsId)
-{
-	GameItem* pStoreItem = GetItem(nGoodsId);
-	return (pStoreItem == nullptr) ? false : true;
-}
-
-/**
- * \brief 出售商品
+ * \brief 玩家购买商品
  * \param nGoodsId
  * \param nGoodsNum
  * \return 0交易成功 1商品不存在 2商品数量不足 3玩家金额不够 4玩家仓库容量不足
  */
 int BlackMarket::SellItem(int nGoodsId, int nSellItemNum)
 {
-	GameItem* pStoreItem = GetItem(nGoodsId);
+	GameItem* pStoreItem = GetItemFromMarket(nGoodsId);
 	// 检查商品是否存在
 	if (pStoreItem == nullptr)
 		return 1;
@@ -109,7 +98,7 @@ int BlackMarket::SellItem(int nGoodsId, int nSellItemNum)
 	return 0;
 }
 
-GameItem* BlackMarket::GetItem(int nGoodsId)
+GameItem* BlackMarket::GetItemFromMarket(int nGoodsId)
 {
 	GameItem* pStoreItem = nullptr;
 	for (GameItem* pStoreItemTmp : m_itemList)

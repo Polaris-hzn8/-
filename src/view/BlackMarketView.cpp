@@ -119,13 +119,14 @@ void BlackMarketView::showOptionMenu()
 	{
 	case 1:// 购买商品
 	{
-		cout << "您要购买的商品编号是:" << endl;
+		cout << "您要购买的商品编号是:";
 		int nGoodsId;
 		cin >> nGoodsId;
-		bool bIsItemExist = m_pBlackMarket->IsItemExist(nGoodsId);
-		if (bIsItemExist)
+		GameItem* pGameItem = nullptr;
+		pGameItem = m_pBlackMarket->GetItemFromMarket(nGoodsId);
+		if (pGameItem)
 		{
-			cout << "您要购买的商品数量是:" << endl;
+			cout << "您要购买的商品数量是:";
 			int nGoodsNum;
 			cin >> nGoodsNum;
 			int nRet = m_pBlackMarket->SellItem(nGoodsId, nGoodsNum);
@@ -153,28 +154,59 @@ void BlackMarketView::showOptionMenu()
 			cout << "商品编号不存在，请输入正确的商品编号!" << endl;
 		}
 		
-		Sleep(1000 * 2);
+		Sleep(1000 * 0.5);
 
 		BlackMarketView::show();
 		break;
 	}
 	case 2:// 出售商品
 	{
-		cout << "您要出售的商品编号是:" << endl;
-		string choice;
-		cin >> choice;
+		cout << "您要出售的商品编号是:";
+		int nGoodsId;
+		cin >> nGoodsId;
+		GameItem* pStoreItem = nullptr;
+		pStoreItem = m_pBlackMarket->GetItemFromMarket(nGoodsId);
+		if (pStoreItem)
+		{
+			cout << "您需要出售的商品数量是:";
+			int nGoodsNum;
+			cin >> nGoodsNum;
+			GameRole *pCurPlayer = GameModel::getInstance()->getRole();
+			int nRet = pCurPlayer->SellItem(nGoodsId, nGoodsNum, pStoreItem->GetOutPrice());
+			switch (nRet)
+			{
+			case 0:
+				cout << "交易成功!" << endl;
+				break;
+			case 1:
+				cout << "交易失败!仓库中不存在该商品!请输入正确的商品编号!" << endl;
+				break;
+			case 2:
+				cout << "交易失败!仓库中对应的货物数量不足!" << endl;
+				break;
+			}
+		}
+		else
+		{
+			cout << "商品编号不存在，请输入正确的商品编号!" << endl;
+		}
+
+		Sleep(1000 * 0.5);
+
+		BlackMarketView::show();
 		break;
 	}
 	case 3:// 离开黑市
 	{
 		cout << "正在离开商店..." << endl;
-		Sleep(500);
+		Sleep(1000 * 0.5);
 		GameMenuView::getInstance()->EnterGameMainView();
+		break;
 	}
 	default:
 	{
 		cout << "请输入有效的操作类型!!!" << endl;
-		Sleep(1000);
+		Sleep(1000 * 0.5);
 		BlackMarketView::show();
 	}
 
