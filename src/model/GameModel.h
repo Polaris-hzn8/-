@@ -21,9 +21,10 @@
 
 class GameModel {
 public:
-    GameModel();
-    virtual ~GameModel();
+    GameModel(const GameModel& gameModel) = delete;                 // 禁用拷贝构造函数
+    GameModel& operator=(const GameModel& gameModel) = delete;      // 禁用拷贝赋值操作重载函数
     static GameModel* getInstance();
+    virtual ~GameModel();
 
     void initData();    // 初始化所有数据
 
@@ -50,6 +51,6 @@ private:
     vector<RailStation*>    m_railStations; // 地铁站集合
     map<int, GameItem*>     m_gameItems;    // 商品集合
 
-    static GameModel*   s_instance;
+    GameModel();                            // 构造函数私有化
+    static GameModel* s_instance;
 };
-

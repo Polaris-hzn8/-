@@ -21,9 +21,10 @@ using namespace std;
 
 class SoundController {
 public:
-    SoundController();
-    virtual ~SoundController();
+    SoundController(const SoundController& soundController) = delete;                 // 禁用拷贝构造函数
+    SoundController& operator=(const SoundController& soundController) = delete;      // 禁用拷贝赋值操作重载函数
     static SoundController* getInstance();
+    virtual ~SoundController();
 
     void playSound(int id); // 音效播放
     void stopSound(int id); // 音效停止
@@ -38,5 +39,7 @@ public:
 protected:
 private:
     bool m_slience;
+
+    SoundController();
     static SoundController* s_instance;
 };

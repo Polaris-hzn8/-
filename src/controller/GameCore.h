@@ -22,9 +22,10 @@ using namespace std;
 class GameCore
 {
 public:
-    GameCore();
-    virtual ~GameCore();
+    GameCore(const GameCore& gameCore) = delete;                 // 禁用拷贝构造函数
+    GameCore& operator=(const GameCore& gameCore) = delete;      // 禁用拷贝赋值操作重载函数
     static GameCore* getInstance();
+    virtual ~GameCore();
 
     void start();       // 游戏开始
     void finish();      // 游戏结束
@@ -34,7 +35,9 @@ private:
     void MarketListUpdate(BlackMarket *market); // 黑市商品数据更新
     void screenUpdate();                        // 显示刷新
 
-    bool m_bGameRuning;     // 游戏主循环运行状态
+    bool m_bGameRuning;                         // 游戏主循环运行状态
+
+    GameCore();
     static GameCore* s_instance;
 };
 

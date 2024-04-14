@@ -26,9 +26,10 @@ using namespace std;
 
 class GameMenuView {
 public:
-    GameMenuView();
-    virtual ~GameMenuView();
+    GameMenuView(const GameMenuView& gameMenuView) = delete;                 // 禁用拷贝构造函数
+    GameMenuView& operator=(const GameMenuView& gameMenuView) = delete;      // 禁用拷贝赋值操作重载函数
     static GameMenuView* getInstance();
+    virtual ~GameMenuView();
 
     // 菜单相关
     void showEntryAnimation();
@@ -52,6 +53,8 @@ private:
     void showHelpMenu();
 private:
     GameMainView* m_pGameMainView;
+
+    GameMenuView();
     static GameMenuView* s_instance;
 };
 

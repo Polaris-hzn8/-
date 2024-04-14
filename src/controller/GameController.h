@@ -17,14 +17,16 @@
 
 class GameController {
 public:
-    GameController();
-    virtual ~GameController();
+    GameController(const GameController& gameController) = delete;                 // 禁用拷贝构造函数
+    GameController& operator=(const GameController& gameController) = delete;      // 禁用拷贝赋值操作重载函数
     static GameController* getInstance();
+    virtual ~GameController();
 
     void start();   //应用开始
     void finish();  //应用结束
 
 protected:
 private:
+    GameController();
     static GameController* s_instance;
 };
