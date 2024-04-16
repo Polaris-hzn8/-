@@ -49,6 +49,12 @@
     <ClCompile Include="src\view\BlackMarketView.cpp">
       <Filter>View</Filter>
     </ClCompile>
+    <ClCompile Include="src\controller\EventController.cpp">
+      <Filter>Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model\EventMessage.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\view\GameMenuView.h">
@@ -95,6 +101,12 @@
     </ClInclude>
     <ClInclude Include="src\view\BlackMarketView.h">
       <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="src\controller\EventController.h">
+      <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="src\model\EventMessage.h">
+      <Filter>Model</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
