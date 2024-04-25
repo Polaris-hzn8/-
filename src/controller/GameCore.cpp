@@ -70,6 +70,9 @@ void GameCore::logicUpdate()
         finish();
 
     // 新的1天触发游戏事件
+    // 重置今日事件
+    gameModel->setCurEventMessage(nullptr);
+    // 生成今日事件
     if (RandomUtil::getProbabilityResult(50))
     {
         int id = RandomUtil::getRandomInteger(0, gameModel->getGameMessages()->size());

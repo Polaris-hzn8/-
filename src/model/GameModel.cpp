@@ -143,5 +143,16 @@ GameRole* GameModel::getRole()
     return m_pRole;
 }
 
+string GameModel::GetItemNameById(int nItemId)
+{
+    string strItemName = "";
+    GameItem* pGameItem = m_gameItems.at(nItemId);
+    if (pGameItem)
+    {
+        strItemName = pGameItem->GetName();
+    }
+    return strItemName;
+}
+
 
 

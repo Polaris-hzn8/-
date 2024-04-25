@@ -47,6 +47,8 @@ public:
     // 获取所有可触发事件
     map<int, EventMessage*>* getGameMessages() { return &m_mapGameMessages; }
 
+    // 通过物品id获取名称
+    string GetItemNameById(int nItemId);
 protected:
 private:
     int                     m_curTime;          // 游戏当前时间

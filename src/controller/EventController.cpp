@@ -24,9 +24,9 @@ typedef struct Message
 
 Message MessageConfig[GAME_MESSAGE_COUNT] =
 {
-    {"专家提议提高大学生动手素质，进口玩具颇受欢迎！", 4, 2, 0, 0},
-    {"厦门的老同学资助我两部走私汽车！发了！！！", 1, 0, 0, 2},
-    {"市场上充斥着来自福建的走私香烟", 0, 0, 8, 0},
+    {"专家提议提高大学生动手素质，进口玩具颇受欢迎！", 1004, 2, 0, 0},
+    {"厦门的老同学资助我两部走私汽车！发了！！！", 1001, 0, 0, 2},
+    {"市场上充斥着来自福建的走私香烟", 1000, 0, 8, 0},
 };
 
 EventController::EventController()
@@ -106,6 +106,7 @@ void EventController::WallMessage(int nEventId)
                 {
                     GameItem* pGameItem = new GameItem();
                     pGameItem->SetId(nItemId);
+                    pGameItem->SetName(pGameModel->GetItemNameById(nItemId));
                     pGameItem->SetInPrice(0);
                     pGameItem->SetCount(nChangeItemNums);
                     pVctDepotItems->push_back(pGameItem);

@@ -56,6 +56,23 @@ void GameInfoView::showTime()
 
 void GameInfoView::showEvent()
 {
+    int width = 62;
+    cout << string(width, '-') << endl;
+    cout << "今日新闻" << endl;
+    cout << string(width, '-') << endl;
+
+    EventMessage* pCurEventMessage = GameModel::getInstance()->getCurEventMessage();
+    if (pCurEventMessage)
+    {
+        cout << pCurEventMessage->GetContent() << endl;
+    }
+    else
+    {
+        cout << "又是平静的一天，没有事件发生......" << endl;
+    }
+
+
+    cout << string(width, '-') << endl;
 }
 
 void GameInfoView::showRoleInfo()
