@@ -13,18 +13,20 @@ using namespace std;
 class EventController
 {
 public:
-	EventController();
+	EventController(const EventController& eventController) = delete;				// 禁用拷贝构造
+	EventController& operator=(const EventController& enventController) = delete;	// 禁用拷贝赋值操作重载函数
+	static EventController* getInstance();
 	virtual ~EventController();
 
 	// 加载事件数据
 	void LoadingData();
 	
 	// 处理触发后的业务逻辑：影响物品价格或者角色拥有物品数量 广播消息
-	void WallMessage();
+	void WallMessage(int nEventId);
 
 
 private:
-
-
+	EventController();
+	static EventController* s_instance;
 };
 

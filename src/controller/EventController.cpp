@@ -11,6 +11,8 @@
 
 #define GAME_MESSAGE_COUNT 3
 
+EventController* EventController::s_instance = nullptr;
+
 typedef struct Message
 {
     string	content;		// 消息内容
@@ -30,6 +32,15 @@ Message MessageConfig[GAME_MESSAGE_COUNT] =
 EventController::EventController()
 {
 
+}
+
+EventController* EventController::getInstance()
+{
+    if (!s_instance)
+    {
+        s_instance = new EventController();
+    }
+    return s_instance;
 }
 
 EventController::~EventController()
@@ -54,6 +65,59 @@ void EventController::LoadingData()
     }
 }
 
-void EventController::WallMessage()
+void EventController::WallMessage(int nEventId)
 {
+    GameModel* pGameModel = GameModel::getInstance();
+    EventMessage* pEventMessage = pGameModel->getGameMessages()->at(nEventId);
+    if (pEventMessage)
+    {
+        pGameModel->setCurEventMessage(pEventMessage);
+        // 随机事件发生
+        // 修改玩家仓库中的货物数量
+        int nChangeItemNums = pEventMessage->GetGoodsCount();
+        if (nChangeItemNums > 0)
+        {//仓库中货物数量增加
+            GameRole* player = pGameModel->getRole();
+            int nCurDepotUse = player->GetCurDepotUse();
+            int nMaxDepotCapa = player->GetMaxDepotCapa();
+            bool bIncrease = (nMaxDepotCapa <= nCurDepotUse + nChangeItemNums) ? true : false;
+            if (bIncrease)
+            {
+                int nItemId = pEventMessage->GetGoodsId();
+                vector<GameItem*>* pVctDepotItems = player->GetDepotItems();
+
+                GameItem* pTargetItem = nullptr;
+                for (GameItem* pGameItem : *pVctDepotItems)
+                {
+                    if (pGameItem->GetId() == nItemId)
+                    {
+                        pTargetItem = pGameItem;
+                        break;
+                    }
+                }
+
+                if (pTargetItem)
+                {
+                    int nCurItemNums = pTargetItem->GetCount();
+                    pTargetItem->SetCount(nCurItemNums + nChangeItemNums);
+                    pTargetItem->SetInPrice((pTargetItem->GetInPrice() * nCurItemNums / (nCurItemNums + nChangeItemNums)));
+                }
+                else
+                {
+                    GameItem* pGameItem = new GameItem();
+                    pGameItem->SetId(nItemId);
+                    pGameItem->SetInPrice(0);
+                    pGameItem->SetCount(nChangeItemNums);
+                    pVctDepotItems->push_back(pGameItem);
+                }
+
+                player->SetCurDepotUse(player->GetCurDepotUse() + nChangeItemNums);
+            }
+        }
+        else
+        {//仓库中货物数量减少
+            // TODO
+
+        }
+    }
 }

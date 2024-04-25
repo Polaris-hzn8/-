@@ -20,6 +20,7 @@ GameModel::GameModel()
     m_curTime = 0;
     m_maxTime = 40;
     m_pRole = nullptr;
+    m_pCurEventMessage = nullptr;
 
     initData();
 }

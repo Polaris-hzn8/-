@@ -6,7 +6,11 @@
 
 #include <algorithm>
 #include "GameCore.h"
+#include "Model/GameModel.h"
+#include "View/GameMenuView.h"
 #include "utility/RandomUtil.h"
+#include "Controller/GameCore.h"
+#include "controller/EventController.h"
 
 GameCore* GameCore::s_instance = nullptr;
 
@@ -31,9 +35,10 @@ GameCore::~GameCore()
 void GameCore::start()
 {
     m_bGameRuning = true;
+    // 加载游戏数据
+    EventController::getInstance()->LoadingData();
     while (m_bGameRuning)
     {
-
         logicUpdate();  // 逻辑刷新
         screenUpdate(); // 显示刷新
     }
@@ -46,10 +51,13 @@ void GameCore::finish()
 }
 
 /**
- * logicUpdate刷新游戏数据
- *  - 判定游戏是否结束
- *  - 刷新玩家存款与欠债数据
- *  - 刷新每日黑市商品数据
+ * 刷新游戏数据logicUpdate
+ * 1.判定游戏是否结束
+ * 2.新的1天触发游戏事件
+ * 3.刷新游戏数据
+ * (1) 刷新当前游戏时间
+ * (2) 刷新玩家存款与欠债数据
+ * (3) 刷新每日黑市商品数据
  */
 void GameCore::logicUpdate()
 {
@@ -61,17 +69,24 @@ void GameCore::logicUpdate()
     if (curTime > maxTime)
         finish();
 
+    // 新的1天触发游戏事件
+    if (RandomUtil::getProbabilityResult(50))
+    {
+        int id = RandomUtil::getRandomInteger(0, gameModel->getGameMessages()->size());
+        EventController::getInstance()->WallMessage(id);
+    }
+
     // 刷新当前游戏时间
     gameModel->setCurTime(curTime + 1);
 
     // 刷新玩家存款与欠债数据
     GameRole* pRole = gameModel->getRole();
 
-    // 刷新玩家存款数据
+    // 存款
     int deposit = (int)pRole->GetDeposit() * 1.05f;
     pRole->SetDeposit(deposit);
 
-    // 刷新玩家欠债数据
+    // 欠债
     int debet = (int)pRole->GetDebt() * 1.1f;
     pRole->SetDebt(debet);
 
@@ -96,7 +111,8 @@ void GameCore::logicUpdate()
 void GameCore::MarketListUpdate(BlackMarket* market)
 {
     // 1.获取所有的物品数据
-    map<int, GameItem*>* pGameItemsMap = GameModel::getInstance()->getGameItems();
+    GameModel* pGameModel = GameModel::getInstance();
+    map<int, GameItem*>* pGameItemsMap = pGameModel->getGameItems();
     int nTotalNums = pGameItemsMap->size();                                     // 随机的最多数量
     int nPartialNums = nTotalNums / 2;                                          // 随机的最少数量
     int nTodayNums = RandomUtil::getRandomInteger(nPartialNums, nTotalNums);    // 随机产生黑市今日上架的商品数量
@@ -126,11 +142,29 @@ void GameCore::MarketListUpdate(BlackMarket* market)
     // 2.根据已经挑选好的商品id随机生成价格 并存储到BlackMarket对象中
     vector<GameItem*>* vctMarketItemList = market->getItemList();
     vctMarketItemList->clear();
-    for (int nitemId : vctItemIdsRandom)
+    for (int nItemId : vctItemIdsRandom)
     {
-        GameItem* pItem = pGameItemsMap->at(nitemId);
+        GameItem* pItem = pGameItemsMap->at(nItemId);
         GameItem* pCommodity = new GameItem();
         int commodity_price = RandomUtil::getRandomInteger(pItem->GetMinPrice(), pItem->GetMaxPrice());
+
+        // 如果有随机事件发生会对 指定商品价格产生影响
+        EventMessage* pCurEventMessage = pGameModel->getCurEventMessage();
+        if (pCurEventMessage &&
+            pCurEventMessage->GetGoodsId() == nItemId)
+        {
+            if (pCurEventMessage->GetPriceInc() > 0)
+            {
+                // 价格翻倍
+                commodity_price = commodity_price * pCurEventMessage->GetPriceInc();
+            }
+            else if(pCurEventMessage->GetPriceDec() > 0)
+            {
+                // 价格减半
+                commodity_price = commodity_price * pCurEventMessage->GetPriceInc();
+            }
+        }
+
         pCommodity->SetId(pItem->GetId());
         pCommodity->SetName(pItem->GetName());
         pCommodity->SetOutPrice(commodity_price);

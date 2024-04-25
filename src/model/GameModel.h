@@ -33,6 +33,8 @@ public:
     void setCurTime(int time) { m_curTime = time; }
     int getMaxTime() { return m_maxTime; }
     void setMaxTime(int time) { m_maxTime = time; }
+    EventMessage* getCurEventMessage() { return m_pCurEventMessage; }
+    void setCurEventMessage(EventMessage* pEventMessage) { m_pCurEventMessage = pEventMessage; }
 
     // 获取角色信息
     GameRole* getRole();
@@ -42,7 +44,7 @@ public:
     vector<RailStation*>* getRailStations() { return &m_railStations; }
     // 获取游戏商品信息
     map<int, GameItem*>* getGameItems() { return &m_gameItems; }
-    // 获取小道消息记录
+    // 获取所有可触发事件
     map<int, EventMessage*>* getGameMessages() { return &m_mapGameMessages; }
 
 protected:
@@ -53,7 +55,9 @@ private:
     vector<GameScene*>      m_gameScenes;       // 场景集合
     vector<RailStation*>    m_railStations;     // 地铁站集合
     map<int, GameItem*>     m_gameItems;        // 商品集合
+
     map<int, EventMessage*> m_mapGameMessages;  // 消息记录
+    EventMessage* m_pCurEventMessage;           // 记录今日触发的随机事件消息
 
     GameModel();                            // 构造函数私有化
     static GameModel* s_instance;

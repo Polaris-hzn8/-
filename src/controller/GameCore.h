@@ -6,10 +6,7 @@
 #pragma once
 
 #include <iostream>
-#include "View/GameMenuView.h"
-#include "Model/GameModel.h"
 #include "Model/BlackMarket.h"
-#include "Controller/GameCore.h"
 using namespace std;
 
 /**
