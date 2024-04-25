@@ -5,12 +5,16 @@
 /// @Brief		: 
 ///****************************************************************************
 
-
 #include "EventMessage.h"
 
 EventMessage::EventMessage()
 {
-
+	m_nId = 0;
+	m_nGoodsId = 0;
+	m_nPriceInc = 0;
+	m_nPriceDec = 0;
+	m_nGoodsCount = 0;
+	m_strContent = "";
 }
 
 EventMessage::~EventMessage()

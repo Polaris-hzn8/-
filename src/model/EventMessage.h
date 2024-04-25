@@ -2,7 +2,7 @@
 /// @Author		: Polaris-hzn8
 /// @CreateTime	: 2024-04-16 22:57
 /// @Mail		: 3453851623@qq.com
-/// @Brief		: 
+/// @Brief		: 影响物品价格和数量的消息数据模型
 ///****************************************************************************
 
 #pragma once
@@ -19,7 +19,7 @@ public:
 	int GetId() { return m_nId; }
 	void SetId(int nId) { m_nId = nId; }
 	int GetGoodsId() { return m_nGoodsId; }
-	void SeGoodstId(int nGoodsId) { m_nGoodsId = nGoodsId; }
+	void SetGoodstId(int nGoodsId) { m_nGoodsId = nGoodsId; }
 	int GetPriceInc() { return m_nPriceInc; }
 	void SetPriceInc(int nPriceInc) { m_nPriceInc = nPriceInc; }
 	int GetPriceDec() { return m_nPriceDec; }

@@ -11,6 +11,7 @@
 #include "GameRole.h"
 #include "GameScene.h"
 #include "RailStation.h"
+#include "EventMessage.h"
 
 /**
  * 单例设计模式(饿汉模式)：
@@ -41,16 +42,20 @@ public:
     vector<RailStation*>* getRailStations() { return &m_railStations; }
     // 获取游戏商品信息
     map<int, GameItem*>* getGameItems() { return &m_gameItems; }
+    // 获取小道消息记录
+    map<int, EventMessage*>* getGameMessages() { return &m_mapGameMessages; }
 
 protected:
 private:
-    int                     m_curTime;      // 游戏当前时间
-    int                     m_maxTime;      // 游戏最大时间
-    GameRole*               m_pRole;        // 游戏角色
-    vector<GameScene*>      m_gameScenes;   // 场景集合
-    vector<RailStation*>    m_railStations; // 地铁站集合
-    map<int, GameItem*>     m_gameItems;    // 商品集合
+    int                     m_curTime;          // 游戏当前时间
+    int                     m_maxTime;          // 游戏最大时间
+    GameRole*               m_pRole;            // 游戏角色
+    vector<GameScene*>      m_gameScenes;       // 场景集合
+    vector<RailStation*>    m_railStations;     // 地铁站集合
+    map<int, GameItem*>     m_gameItems;        // 商品集合
+    map<int, EventMessage*> m_mapGameMessages;  // 消息记录
 
     GameModel();                            // 构造函数私有化
     static GameModel* s_instance;
 };
+
