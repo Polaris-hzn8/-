@@ -45,11 +45,9 @@ GameController与GameCore的比较：GameController更偏向于整体游戏的�
     - 随机事件触发机制
     - 随机事件的事件效果处理
 
+### 备忘memo
 
-
-
-
-
+1. 目前商品id读取显示存在问题需要修复，可能需要设计一张表格用于对应物品及其id，
 
 
 
